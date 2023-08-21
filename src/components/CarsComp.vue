@@ -17,14 +17,14 @@
               <div class="relative space-y-1 p-4">
                 <h4 class="text-lg text-gray-900">Honda Civic</h4>
                 <h4 class="text-lg text-gray-500">MIH8505</h4>
-                <h4 class="text-lg-100 text-gray-500">Carlos Cardozo</h4>
+                <h4 class="text-lg-100 text-gray-500"><br /></h4>
                 <br />
                 <div class="relative h-6 text-gray-800 text-sm">
                   <span class="transition duration-300 group-hover:invisible group-hover:opacity-0"
                     >Mais Infos
                   </span>
                   <a
-                    href=""
+                    href="/infos"
                     class="flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0 text-blue-500"
                   >
                     <span>Mais Infos</span>
