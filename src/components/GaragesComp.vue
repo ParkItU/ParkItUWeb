@@ -42,7 +42,7 @@
               </div>
               <img
                 class="absolute bottom-0 right-6 w-[6rem] transition duration-300 group-hover:scale-[1.4]"
-                src="https://o.remove.bg/downloads/67155adc-096a-45cb-b044-795df72dcae3/fullsize_2011_01_15_18_WDL-Logo-557_170_032511509_1330559605-removebg-preview.png"
+                src="/src/assets/images/SFestacionamentos.png"
                 alt=""
               />
             </div>

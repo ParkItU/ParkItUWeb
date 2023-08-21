@@ -22,7 +22,7 @@
             <h3 class="text-2xl font-medium text-blue-500">
               <img
                 class="h-10 object-cover"
-                src=""
+                src="/src/assets/images/SFestacionamentos.png"
                 alt="Logo"
               />
             </h3>
@@ -33,32 +33,28 @@
         <div class="items-center hidden space-x-8 lg:flex">
           <a
             class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
+            href="/garages"
           >
-            Garages
+            Garagens
           </a>
 
           <a
             class="flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold text-blue-600"
+            href="/cars"
           >
-            Cars
-          </a>
-
-          <a
-            class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
-          >
-            Details
-          </a>
-
-          <a
-            class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
-          >
-            Sobre
+            Carros
           </a>
 
           <a
             class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
           >
             Ajuda
+          </a>
+
+          <a
+            class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
+          >
+            Sobre
           </a>
         </div>
 
