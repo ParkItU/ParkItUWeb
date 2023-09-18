@@ -15,7 +15,8 @@
               class="group relative flex cursor-pointer justify-between rounded-xl bg-gray-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-blue-500 before:opacity-0 before:transition before:duration-500 hover:before:opacity-50"
             >
               <div class="relative space-y-1 p-4">
-                <h4 class="text-lg text-gray-900">SF Park Estacionamento</h4>
+                <h4 class="text-l text-gray-900">SF Park Estacionamento</h4>
+                <h6 class="text-lg text-gray-600">Avenida Brasil</h6>
                 <div class="relative h-6 text-gray-800 text-sm">
                   <span class="transition duration-300 group-hover:invisible group-hover:opacity-0"
                     >Ver Carros
@@ -41,7 +42,7 @@
                 </div>
               </div>
               <img
-                class="absolute bottom-0 right-6 w-[6rem] transition duration-300 group-hover:scale-[1.4]"
+                class="absolute bottom-0 right-6 w-[8rem] transition duration-300 group-hover:scale-[1.4]"
                 src="/src/assets/images/SFestacionamentos.png"
                 alt=""
               />

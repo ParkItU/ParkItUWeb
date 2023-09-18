@@ -11,11 +11,11 @@ const router = createRouter({
       name: '/garages',
       component: GarageView
     },
-    {
-      path: '/garages',
-      name: '/garages',
-      component: GarageView
-    },
+    // {
+    //   path: '/garages',
+    //   name: '/garages',
+    //   component: GarageView
+    // },
     {
       path: '/cars',
       name: 'cars',

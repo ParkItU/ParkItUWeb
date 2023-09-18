@@ -29,7 +29,7 @@
         <div class="items-center hidden space-x-8 lg:flex">
           <a
             class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
-            href="/garages"
+            href="/"
           >
             Home
           </a>
