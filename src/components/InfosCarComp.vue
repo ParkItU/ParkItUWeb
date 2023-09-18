@@ -1,8 +1,7 @@
 <script setup></script>
 <template>
   <!-- component -->
-  <div class=" min-h-screen w-screen">
-    
+  <div class="min-h-screen">
     <div class="bg-gray-100 flex flex-col">
       <div class="relative m-3 flex flex-wrap mx-auto justify-center">
         <div class="min-w-[340px]flex flex-col group">
@@ -23,8 +22,8 @@
           >
             Honda Civic</a
           >
-          <p class="mb-4 font-light text-sm md:text-sm text-center text-gray-400">MIH8505</p>
           <p class="mb-4 font-light text-sm md:text-sm text-center text-gray-400">Carlos Cardozo</p>
+          <p class="mb-4 font-light text-sm md:text-sm text-center text-gray-400">MIH8505</p>
           <p class="mb-4 font-light text-sm md:text-sm text-center text-gray-400">21/08/2023</p>
           <p class="mb-4 font-light text-sm md:text-sm text-center text-gray-400">16:00</p>
           <div class="flex justify-center gap-x-3">

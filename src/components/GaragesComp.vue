@@ -16,7 +16,7 @@
             >
               <div class="relative space-y-1 p-4">
                 <h4 class="text-l text-gray-900">SF Park Estacionamento</h4>
-                <h6 class="text-lg text-gray-600">Avenida Brasil</h6>
+                <h6 class="text-lg text-gray-500">Avenida Brasil</h6>
                 <div class="relative h-6 text-gray-800 text-sm">
                   <span class="transition duration-300 group-hover:invisible group-hover:opacity-0"
                     >Ver Carros

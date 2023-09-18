@@ -16,6 +16,7 @@
             >
               <div class="relative space-y-1 p-4">
                 <h4 class="text-lg text-gray-900">Honda Civic</h4>
+                <h4 class="text-lg text-gray-500">Carlos Cardozo</h4>
                 <h4 class="text-lg text-gray-500">MIH8505</h4>
                 <h4 class="text-lg-100 text-gray-500"><br /></h4>
                 <br />
