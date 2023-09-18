@@ -36,12 +36,14 @@
 
           <a
             class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
+            href="/ajuda"
           >
             Ajuda
           </a>
 
           <a
             class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
+            href="/sobre"
           >
             Sobre
           </a>
@@ -52,6 +54,7 @@
           <!-- Register -->
           <a
             class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
+            href="/novoCarro"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -76,6 +79,7 @@
           <!-- Login -->
           <a
             class="flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold text-blue-600"
+            href="/login"
           >
             <svg
               class="fill-current h-5 w-5 mr-2 mt-0.5"
