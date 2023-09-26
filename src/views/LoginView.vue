@@ -1,9 +1,11 @@
 <script setup>
-import NavBarComp from '../components/NavBarComp.vue'
+import LoginComp from '../components/LoginComp.vue'
+import FooterComp from '../components/FooterComp.vue'
 </script>
 
 <template>
   <main>
-    <NavBarComp />
+    <LoginComp />
+    <FooterComp />
   </main>
 </template>
