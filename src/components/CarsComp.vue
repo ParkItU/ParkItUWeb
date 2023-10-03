@@ -2,7 +2,7 @@
 <template>
   <!-- component -->
   <div class="bg-white">
-    <div class="container mx-auto px-6 py-16 xl:w-[100%]">
+    <div class="container mx-auto px-6 py-16 xl:w-[200%]">
       <div class="mx-auto sm:w-6/12 lg:w-5/12 xl:w-[200%]">
         <div>
           <h1 class="text-3xl">Carros na Garagem</h1>
@@ -18,29 +18,20 @@
                 <h4 class="text-lg text-gray-900">Honda Civic</h4>
                 <h4 class="text-lg text-gray-500">Carlos Cardozo</h4>
                 <h4 class="text-lg text-gray-500">MIH8505</h4>
-                <h4 class="text-lg-100 text-gray-500"><br /></h4>
+                <h4 class="text-lg text-gray-500">03/10/2023</h4>
+                <h4 class="text-lg text-gray-500">16:00</h4>
+                <br />
                 <br />
                 <div class="relative h-6 text-gray-800 text-sm">
                   <span class="transition duration-300 group-hover:invisible group-hover:opacity-0"
-                    >Mais Infos
+                    ><img class="h-10 object-cover" src="/public/excluir.png" alt="Logo" />
                   </span>
                   <a
-                    href="/infos"
                     class="flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0 text-blue-500"
                   >
-                    <span>Mais Infos</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-4 w-4 -translate-x-4 transition duration-300 group-hover:translate-x-0"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
+                    <span
+                      ><img class="h-10 object-cover" src="/public/excluir.png" alt="Logo"
+                    /></span>
                   </a>
                 </div>
               </div>

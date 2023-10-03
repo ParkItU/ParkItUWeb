@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import GarageView from '../views/GarageView.vue'
 import CarView from '@/views/CarView.vue'
-import InfoCarView from '../views/InfoCarView.vue'
 import AjudaView from '../views/AjudaView.vue'
 import SobreView from '../views/SobreView.vue'
 import NewCarView from '../views/NewCarView.vue'
@@ -15,20 +14,10 @@ const router = createRouter({
       name: '/garages',
       component: GarageView
     },
-    // {
-    //   path: '/garages',
-    //   name: '/garages',
-    //   component: GarageView
-    // },
     {
       path: '/cars',
       name: 'cars',
       component: CarView
-    },
-    {
-      path: '/infos',
-      name: '/infos',
-      component: InfoCarView
     },
     {
       path: '/ajuda',
