@@ -36,22 +36,15 @@
                 <li>
                   <a
                     class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                    href="/sobre"
-                    >Sobre Nós</a
+                    href="/ajuda"
+                    >Ajuda</a
                   >
                 </li>
-              </ul>
-            </div>
-            <div class="w-full lg:w-4/12 px-4">
-              <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2"
-                >Outros</span
-              >
-              <ul class="list-unstyled">
                 <li>
                   <a
                     class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                    href="https://github.com/ParkItU"
-                    >Github</a
+                    href="/sobre"
+                    >Sobre Nós</a
                   >
                 </li>
               </ul>

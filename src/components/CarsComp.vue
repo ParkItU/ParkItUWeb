@@ -45,7 +45,7 @@
                 </div>
               </div>
               <img
-                class="absolute bottom-0 right-6 w-[20rem] transition duration-300 group-hover:scale-[1.1]"
+                class="absolute bottom-0 right-0 w-[15rem] transition duration-300 group-hover:scale-[1.1]"
                 src="https://www.pngmart.com/files/4/Honda-Civic-PNG-Photo.png"
                 alt=""
               />

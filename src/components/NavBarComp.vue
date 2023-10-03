@@ -18,37 +18,12 @@
         <!-- Logo Container -->
         <div class="flex items-center">
           <!-- Logo -->
-          <a class="cursor-pointer">
+          <a href="/" class="cursor-pointer">
             <h3 class="text-2xl font-medium text-blue-500">
               <img class="h-10 object-cover" src="" alt="Logo" />
             </h3>
           </a>
         </div>
-
-        <!-- Links Section -->
-        <div class="items-center hidden space-x-8 lg:flex">
-          <a
-            class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
-            href="/"
-          >
-            Home
-          </a>
-
-          <a
-            class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
-            href="/ajuda"
-          >
-            Ajuda
-          </a>
-
-          <a
-            class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
-            href="/sobre"
-          >
-            Sobre
-          </a>
-        </div>
-
         <!-- Icon Menu Section -->
         <div class="flex items-center space-x-5">
           <!-- Register -->
