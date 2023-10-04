@@ -3,19 +3,18 @@
   <div class="bg-white dark:bg-gray-900">
     <div class="flex h-screen">
       <div
-        class="hidden bg-cover lg:block lg:w-3/3"
+        class="hidden bg-cover lg:flex lg:w-2/4"
         style="
           background-image: url(https://media.istockphoto.com/id/636444558/pt/foto/vazio-estacionamento-lotes-vista-a%C3%A9rea.jpg?s=612x612&w=0&k=20&c=zhhTe_I5mf_kXAeoB-yKHH_JNQKmBttbRNDRbzbHg2c=);
         "
       >
         <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
           <div>
-            <h2 class="text-4xl font-bold text-white"> A procura por estacionamento em sua região aumentou?</h2>
+            <h2 class="text-4xl font-bold text-white">
+              A procura por estacionamento em sua região aumentou?
+            </h2>
 
-            <p class="max-w-xl mt-3 text-gray-300 font-bold" >
-              Junte-se a nós! Contrate a ParkItU.
-               
-            </p>
+            <p class="max-w-xl mt-3 text-gray-300 font-bold">Junte-se a nós! Contrate a ParkItU.</p>
           </div>
         </div>
       </div>
@@ -31,7 +30,7 @@
           <div class="mt-8">
             <form>
               <div>
-                <label for="email" class="block mb-2 text-sm text-gray-600 dark:text-gray-200"
+                <label for="email" class="flex mb-2 text-sm text-gray-600 dark:text-gray-200"
                   >Insira seu e-mail</label
                 >
                 <input
@@ -39,7 +38,7 @@
                   name="email"
                   id="email"
                   placeholder="exemplo@exemplo.com"
-                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  class="flex w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
 
@@ -60,7 +59,7 @@
                   name="password"
                   id="password"
                   placeholder="*******"
-                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  class="flex w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
 
@@ -74,7 +73,7 @@
             </form>
 
             <p class="mt-6 text-sm text-center text-gray-400">
-              Não tem uma conta ainda? 
+              Não tem uma conta ainda?
               <a href="#" class="text-blue-500 focus:outline-none focus:underline hover:underline"
                 >Cadastre-se</a
               >.

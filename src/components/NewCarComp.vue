@@ -7,7 +7,7 @@
         <div class="-mx-3 flex flex-wrap">
           <div class="w-full px-3 sm:w-1/2">
             <div class="mb-5">
-              <label for="fName" class="mb-3 block text-base font-medium text-[#07074D]">
+              <label for="fName" class="mb-3 flex text-base font-medium text-[#07074D]">
                 Nome do Carro
               </label>
               <input
@@ -21,7 +21,7 @@
           </div>
           <div class="w-full px-3 sm:w-1/2">
             <div class="mb-5">
-              <label for="lName" class="mb-3 block text-base font-medium text-[#07074D]">
+              <label for="lName" class="mb-3 flex text-base font-medium text-[#07074D]">
                 Nome do Dono do Carro
               </label>
               <input
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="mb-5">
-          <label for="guest" class="mb-3 block text-base font-medium text-[#07074D]">
+          <label for="guest" class="mb-3 flex text-base font-medium text-[#07074D]">
             Placa do Carro
           </label>
           <input
@@ -51,7 +51,7 @@
         <div class="-mx-3 flex flex-wrap">
           <div class="w-full px-3 sm:w-1/2">
             <div class="mb-5">
-              <label for="date" class="mb-3 block text-base font-medium text-[#07074D]">
+              <label for="date" class="mb-3 flex text-base font-medium text-[#07074D]">
                 Data
               </label>
               <input
@@ -64,7 +64,7 @@
           </div>
           <div class="w-full px-3 sm:w-1/2">
             <div class="mb-5">
-              <label for="time" class="mb-3 block text-base font-medium text-[#07074D]">
+              <label for="time" class="mb-3 flex text-base font-medium text-[#07074D]">
                 Hora
               </label>
               <input
@@ -78,7 +78,7 @@
         </div>
 
         <div class="mb-5">
-          <label class="mb-3 block text-base font-medium text-[#07074D]"> Adicionar Foto? </label>
+          <label class="mb-3 flex text-base font-medium text-[#07074D]"> Adicionar Foto? </label>
           <div class="flex items-center space-x-6">
             <div class="flex items-center">
               <input
@@ -112,7 +112,7 @@
         <div v-if="addPhoto === 'sim'">
           <!-- Seção de Upload de Fotos -->
           <div class="mb-6 pt-4">
-            <label class="mb-5 block text-xl font-semibold text-[#07074D]"> Upload File </label>
+            <label class="mb-5 flex text-xl font-semibold text-[#07074D]"> Upload File </label>
 
             <div class="mb-8">
               <input type="file" name="file" id="file" class="sr-only" />
@@ -121,10 +121,10 @@
                 class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
               >
                 <div>
-                  <span class="mb-2 block text-xl font-semibold text-[#07074D]">
+                  <span class="mb-2 flex text-xl font-semibold text-[#07074D]">
                     Drop files here
                   </span>
-                  <span class="mb-2 block text-base font-medium text-[#6B7280]"> Or </span>
+                  <span class="mb-2 flex text-base font-medium text-[#6B7280]"> Or </span>
                   <span
                     class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
                   >

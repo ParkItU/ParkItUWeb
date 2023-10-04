@@ -6,7 +6,7 @@
       <div class="mx-auto sm:w-6/12 lg:w-5/12 xl:w-[200%]">
         <div>
           <h1 class="text-3xl">Carros na Garagem</h1>
-          <p class="mt-2 text-gray-600">Selecione um Carro</p>
+          <br />
         </div>
 
         <div class="mt-4">

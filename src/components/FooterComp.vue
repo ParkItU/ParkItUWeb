@@ -29,20 +29,20 @@
         <div class="w-full lg:w-6/12 px-4">
           <div class="flex flex-wrap items-top mb-6">
             <div class="w-full lg:w-4/12 px-4 ml-auto">
-              <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2"
+              <span class="flex uppercase text-blueGray-500 text-sm font-semibold mb-2"
                 >Links Úteis</span
               >
               <ul class="list-unstyled">
                 <li>
                   <a
-                    class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
+                    class="text-blueGray-600 hover:text-blueGray-800 font-semibold flex pb-2 text-sm"
                     href="/ajuda"
                     >Ajuda</a
                   >
                 </li>
                 <li>
                   <a
-                    class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
+                    class="text-blueGray-600 hover:text-blueGray-800 font-semibold flex pb-2 text-sm"
                     href="/sobre"
                     >Sobre Nós</a
                   >
