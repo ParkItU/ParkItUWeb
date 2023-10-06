@@ -9,8 +9,5 @@ import { RouterView } from 'vue-router'
 #app {
   display: flex;
 }
-.body {
-  margin: 0;
-  padding: 0;
-}
+
 </style>
