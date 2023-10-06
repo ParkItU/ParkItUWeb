@@ -115,7 +115,7 @@
             <label class="mb-5 flex text-xl font-semibold text-[#07074D]"> Upload File </label>
 
             <div class="mb-8">
-              <input type="file" name="file" id="file" class="sr-only" />
+              <input type="file" name="file" id="file" class="sr-only" @change="handleFileChange" />
               <label
                 for="file"
                 class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
@@ -133,6 +133,8 @@
                 </div>
               </label>
             </div>
+
+            <img v-if="downloadURL" :src="downloadURL" alt="Uploaded Image" class="max-h-48 my-3" />
           </div>
         </div>
 
@@ -152,7 +154,21 @@
 export default {
   data() {
     return {
-      addPhoto: 'nao'
+      addPhoto: 'nao',
+      downloadURL: null
+    }
+  },
+  methods: {
+    openFileInput() {
+      this.$refs.fileInput.click()
+    },
+    handleFileChange(event) {
+      const file = event.target.files[0]
+      if (file) {
+        // Use o URL.createObjectURL para criar uma URL temporária para o arquivo
+        const fileURL = URL.createObjectURL(file)
+        this.downloadURL = fileURL
+      }
     }
   }
 }
