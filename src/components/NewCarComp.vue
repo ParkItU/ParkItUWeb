@@ -121,10 +121,6 @@
                 class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
               >
                 <div>
-                  <span class="mb-2 flex text-xl font-semibold text-[#07074D]">
-                    Drop files here
-                  </span>
-                  <span class="mb-2 flex text-base font-medium text-[#6B7280]"> Or </span>
                   <span
                     class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
                   >
@@ -142,7 +138,7 @@
           <button
             class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
           >
-            Criar
+            Adicionar
           </button>
         </div>
       </form>

@@ -22,13 +22,57 @@
       <div class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
         <div class="flex-1">
           <div class="text-center">
-            <h2 class="text-4xl font-bold text-center text-gray-700 dark:text-white">Login</h2>
+            <h2 class="text-4xl font-bold text-center text-gray-700 dark:text-white">Cadastro</h2>
 
-            <p class="mt-3 text-gray-500 dark:text-gray-300">Faça login para acessar sua conta</p>
+            <p class="mt-3 text-gray-500 dark:text-gray-300">
+              Faça seu cadastro para criar sua conta
+            </p>
           </div>
 
           <div class="mt-8">
             <form>
+              <div>
+                <label
+                  for="nome"
+                  class="flex mb-2 text-sm text-gray-600 dark:text-gray-200"
+                  >Insira seu Nome Completo</label
+                >
+                <input
+                  type="nome"
+                  name="nome"
+                  id="nome"
+                  placeholder="Nome Completo"
+                  class="flex w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                />
+              </div>
+              <br />
+              
+              <div>
+                <label for="cpf" class="flex mb-2 text-sm text-gray-600 dark:text-gray-200"
+                  >Insira seu CPF</label
+                >
+                <input
+                  type="cpf"
+                  name="cpf"
+                  id="cpf"
+                  placeholder="XXX.XXX.XXX-XX"
+                  class="flex w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                />
+              </div>
+              <br />
+              <div>
+                <label for="phone" class="flex mb-2 text-sm text-gray-600 dark:text-gray-200"
+                  >Insira seu Telefone</label
+                >
+                <input
+                  type="phone"
+                  name="phone"
+                  id="phone"
+                  placeholder="(XX) X XXXX-XXXX"
+                  class="flex w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                />
+              </div>
+              <br />
               <div>
                 <label for="email" class="flex mb-2 text-sm text-gray-600 dark:text-gray-200"
                   >Insira seu e-mail</label
@@ -41,7 +85,6 @@
                   class="flex w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
-
               <div class="mt-6">
                 <div class="flex justify-between mb-2">
                   <label for="password" class="text-sm text-gray-600 dark:text-gray-200"
@@ -68,12 +111,10 @@
             </form>
 
             <p class="mt-6 text-sm text-center text-gray-400">
-              Não tem uma conta ainda?
-              <a
-                href="/cadastro"
-                class="text-blue-500 focus:outline-none focus:underline hover:underline"
-                >Cadastre-se</a
-              >.
+              Já tem uma conta?
+              <a href="/login" class="text-blue-500 focus:outline-none focus:underline hover:underline"
+                >Login</a
+              >
             </p>
           </div>
         </div>
