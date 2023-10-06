@@ -20,7 +20,7 @@
           <!-- Logo -->
           <a href="/" class="cursor-pointer">
             <!-- <h3 class="text-2xl font-medium text-blue-500"> -->
-              <img class="h-10 object-resize font-sans" src="src/assets/images/ParkItU.png" alt="Logo" />
+              <img class="h-12 object-cover font-sans" src="src/assets/images/ParkItU.png" alt="Logo" />
             <!-- </h3> -->
           </a>
         </div>
