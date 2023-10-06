@@ -19,9 +19,9 @@
         <div class="flex items-center">
           <!-- Logo -->
           <a href="/" class="cursor-pointer">
-            <h3 class="text-2xl font-medium text-blue-500">
-              <img class="h-10 object-cover" src="" alt="Logo" />
-            </h3>
+            <!-- <h3 class="text-2xl font-medium text-blue-500"> -->
+              <img class="h-10 object-resize font-sans" src="src/assets/images/ParkItU.png" alt="Logo" />
+            <!-- </h3> -->
           </a>
         </div>
         <!-- Icon Menu Section -->
