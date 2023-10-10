@@ -6,6 +6,8 @@ import SobreView from '../views/SobreView.vue'
 import NewCarView from '../views/NewCarView.vue'
 import LoginView from '../views/LoginView.vue'
 import CadastroClienteView from '../views/CadastroClienteView.vue'
+import HoraView from '../views/HoraView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,6 +47,13 @@ const router = createRouter({
       name: '/cadastro',
       component: CadastroClienteView
     },
+
+    {
+      path: '/hora',
+      name: '/hora',
+      component: HoraView
+    },
+
   ]
 })
 
