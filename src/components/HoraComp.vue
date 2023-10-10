@@ -1,5 +1,6 @@
 <template>
 <!-- component -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,5 +29,4 @@
   </div>
 </body>
 </html>
-    
 </template>
