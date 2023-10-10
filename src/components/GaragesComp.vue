@@ -1,4 +1,18 @@
-<script setup></script>
+<script setup>
+import { ref, onMounted } from 'vue'
+
+import garageService from '@/services/garages.js'
+
+const garages = ref([])
+const currentGarage = ref([
+  garageName: ''
+])
+
+onMounted(async ()=> {
+  const data = await genreService.getAllGarages()
+  garages.value = data
+})
+</script>
 <template>
   <!-- component -->
   <div class="bg-white">
@@ -15,7 +29,9 @@
               class="group relative flex cursor-pointer justify-between rounded-xl bg-gray-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-blue-500 before:opacity-0 before:transition before:duration-500 hover:before:opacity-50"
             >
               <div class="relative space-y-1 p-4">
-                <h4 class="text-l text-gray-900">*SF Park Estacionamento</h4>
+                <h4 v-for="garage in garages" :key="garage.id" class="text-l text-gray-900">
+                  {{ garage.NameGarage }}
+                </h4>
                 <h6 class="text-lg text-gray-500">*Avenida Brasil</h6>
                 <!-- LABEL COM O MÉTODO GET -->
                 <div class="relative h-6 text-gray-800 text-sm">
