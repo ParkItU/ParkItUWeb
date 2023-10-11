@@ -30,7 +30,7 @@
           
                   </span>
                   <a
-                    class="flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0 text-blue-500"
+                    class="flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0 text-blue-500"  href="/hora"
                   >
                     <span
                       ><img class="h-8 object-cover" src="/public/hora.png" alt="Logo"
