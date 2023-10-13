@@ -9,7 +9,7 @@
       </h1>
 
       <p class="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">
-        Com o crescimento e procura por vagas para os veículos de nossa região, tivemos a ideia de desenvolver um sisrtema de gerenciamento e desenvolvimento digital para estacionamentos de veículos. Assim, atualmente, conseguiremos fazer com que os donos de garagens concentrem seus esforços na melhora da sua gestão. Para isso, apresentamos, um sistema de controle de que permita monitorar a entrada e saída de veículos dos estabelecimentos. Como nossa intenção é melhorar a gestão do negócio, é muito importante que consigamos ter relatórios, como por exemplo, numero de ingressos e egressos mensais.
+        Com o crescimento e procura por vagas para os veículos de nossa região, tivemos a ideia de desenvolver um sisrtema de gerenciamento e desenvolvimento digital para estacionamentos de veículos. Assim, atualmente, conseguiremos fazer com que os donos de garagens concentrem seus esforços na melhora da sua gestão. Para isso, apresentamos, um sistema de controle de que permita monitorar a entrada e saída de veículos dos estabelecimentos.
       </p>
 
       <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4">

@@ -2,7 +2,7 @@ import api from '../plugins/api'
 
 class GarageService {
     async getAllGarages() {
-        const response = await api.get('https://backendparkitu-dev.fl0.io/api/garages')
+        const response = await api.get('/garages/')
         return response.data
     }
 }

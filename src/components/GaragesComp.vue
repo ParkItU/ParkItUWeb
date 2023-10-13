@@ -4,25 +4,22 @@ import { ref, onMounted } from 'vue'
 import garageService from '@/services/garages.js'
 
 const garages = ref([])
-const currentGarage = ref({
-  garageName: ''
-})
 
-onMounted(async ()=> {
-  const data = await genreService.getAllGarages()
+onMounted(async () => {
+  const data = await garageService.getAllGarages()
   garages.value = data
 })
 </script>
 <template>
-  <!-- component -->
   <div class="bg-white">
     <div class=" ">
       <div class="mx-auto sm:w-6/12 lg:w-5/12 xl:w-[200%]">
         <div>
-          <h1 class="text-3xl">Olá *usuario</h1>
-          <p class="mt-2 text-gray-600">Selecione uma Garagem</p>
+          <!-- Request of backend is login username -->
+          <h1 class="text-3xl">Olá manoel.gomes@gmail.com</h1>
+          <p class="mt-2 text-gray-600">Selecione uma Garagem:</p>
         </div>
-
+<div></div>
         <div class="mt-4">
           <div class="relative flex flex-col justify-end overflow-hidden rounded-b-xl pt-6">
             <div
@@ -30,10 +27,11 @@ onMounted(async ()=> {
             >
               <div class="relative space-y-1 p-4">
                 <h4 v-for="garage in garages" :key="garage.id" class="text-l text-gray-900">
-                  {{ garage.NameGarage }}
+                  {{ garage.nameGarage }}
                 </h4>
-                <h6 class="text-lg text-gray-500">*Avenida Brasil</h6>
-                <!-- LABEL COM O MÉTODO GET -->
+                <h6 v-for="garage in garages" :key="garage.id" class="text-lg text-gray-500">
+                  {{ garage.adressGarage }}
+                </h6>
                 <div class="relative h-6 text-gray-800 text-sm">
                   <span class="transition duration-300 group-hover:invisible group-hover:opacity-0"
                     >Ver Carros
@@ -58,10 +56,10 @@ onMounted(async ()=> {
                   </a>
                 </div>
               </div>
+              <!-- Request of image in backend is not used url -->
               <img
                 class="absolute bottom-0 right-6 w-[8rem] transition duration-300 group-hover:scale-[1.4]"
-                src="/src/assets/images/SFestacionamentos.png"
-                alt=""
+                src="https://res.cloudinary.com/dsyt96xgn/image/upload/v1/media/images/8e4c6d46-4c1e-4381-85bf-11898311b903_mofaex"
               />
             </div>
           </div>

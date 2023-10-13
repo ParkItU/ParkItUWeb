@@ -1,7 +1,7 @@
 <template>
   <!-- component -->
   <div class="p-8">
-    <div class="bg-white p-4 rounded-lg shadow-xl py-8 mt-12">
+    <div class="bg-white p-4 rounded-lg shadow-xl py-8 mt-1">
       <h4 class="text-4xl font-bold text-gray-800 tracking-widest uppercase text-center">FAQ</h4>
       <p class="text-center text-gray-600 text-sm mt-2">
         Aqui estão algumas das perguntas mais frequentes
@@ -45,14 +45,15 @@
           <div>
             <div class="flex items-center h-16">
               <span class="text-lg text-blue-600 font-bold"
-                >Como posso vincular um carro a uma garagem específica no software?</span
+                >Como posso verificar o vinculo de um carro a uma garagem específica no
+                software?</span
               >
             </div>
             <div class="flex items-center py-2">
               <span class="text-gray-500"
                 >Faça login na conta Admin. Acesse a seção "Garagens". Escolha a garagem à qual
-                deseja vincular o carro. Selecione a opção "Vincular Carro" e escolha o carro que
-                deseja associar à garagem. Confirme a vinculação do carro à garagem.</span
+                deseja ver os carros vinculados. Selecione a opção "Caros" e escolha o carro que
+                esteja associado à garagem. Confirme a vinculação do carro à garagem.</span
               >
             </div>
           </div>
@@ -78,7 +79,7 @@
                 Para excluir um carro da sua lista, siga estas etapas: Faça login na sua conta.
                 Acesse a seção "Meus Carros" ou "Cadastro de Veículos". Localize o carro que deseja
                 excluir na lista. Selecione a opção "Excluir Carro" ou similar. Confirme a exclusão
-                quando solicitado.
+                quando solicitado atingindo a página de pagamento por valor/hora.
               </span>
             </div>
           </div>
@@ -96,15 +97,14 @@
           <div>
             <div class="flex items-center h-16">
               <span class="text-lg text-blue-600 font-bold">
-                Como posso visualizar a lista de carros cadastrados na minha conta?</span
-              >
+                Como visualizar o valor e efetuar o pagamento?
+              </span>
             </div>
             <div class="flex items-center py-2">
-              <span class="text-gray-500"
-                >Para visualizar a lista de carros cadastrados na sua conta, siga estas etapas: Faça
-                login na sua conta. Acesse a seção "Carros". Você verá uma lista de todos os carros
-                cadastrados na sua conta, com detalhes como modelo e placa.</span
-              >
+              <span class="text-gray-500"></span>
+              Para visualizar o valor à pagar você precisa estar logado e acessar o carro a ser
+              efetuado o pagamente. O valor obtido é gerado a partir da diferença dos horários de
+              entrada e de saída. Pagamento por QR code, boleto ou pix.
             </div>
           </div>
         </div>
