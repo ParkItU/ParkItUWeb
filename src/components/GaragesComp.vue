@@ -4,9 +4,9 @@ import { ref, onMounted } from 'vue'
 import garageService from '@/services/garages.js'
 
 const garages = ref([])
-const currentGarage = ref([
+const currentGarage = ref({
   garageName: ''
-])
+})
 
 onMounted(async ()=> {
   const data = await genreService.getAllGarages()
