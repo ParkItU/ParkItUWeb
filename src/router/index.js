@@ -7,6 +7,7 @@ import NewCarView from '../views/NewCarView.vue'
 import LoginView from '../views/LoginView.vue'
 import CadastroClienteView from '../views/CadastroClienteView.vue'
 import HoraView from '../views/HoraView.vue'
+import PreviewFormView from '../views/PreviewFormView.vue'
 
 
 const router = createRouter({
@@ -53,6 +54,13 @@ const router = createRouter({
       name: '/hora',
       component: HoraView
     },
+
+    {
+      path: '/previewform',
+      name: '/previewform',
+      component: PreviewFormView
+    },
+
 
   ]
 })
