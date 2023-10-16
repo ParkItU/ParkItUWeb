@@ -32,9 +32,7 @@
           <div class="mt-8">
             <form>
               <div>
-                <label
-                  for="nome"
-                  class="flex mb-2 text-sm text-gray-600 dark:text-gray-200"
+                <label for="nome" class="flex mb-2 text-sm text-gray-600 dark:text-gray-200"
                   >Insira seu Nome Completo</label
                 >
                 <input
@@ -46,7 +44,7 @@
                 />
               </div>
               <br />
-              
+
               <div>
                 <label for="cpf" class="flex mb-2 text-sm text-gray-600 dark:text-gray-200"
                   >Insira seu CPF</label
@@ -105,14 +103,16 @@
                 <button
                   class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
                 >
-                  Logar
+                  Cadastar
                 </button>
               </div>
             </form>
 
             <p class="mt-6 text-sm text-center text-gray-400">
               Já tem uma conta?
-              <a href="/login" class="text-blue-500 focus:outline-none focus:underline hover:underline"
+              <a
+                href="/"
+                class="text-blue-500 focus:outline-none focus:underline hover:underline"
                 >Login</a
               >
             </p>
