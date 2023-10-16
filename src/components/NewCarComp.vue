@@ -1,7 +1,65 @@
+<script scoped>
+import { ref, reactive } from 'vue'
+import carService from '@/services/cars.js'
+
+const coverUrl = ref('')
+const file = ref(null)
+
+const currentCar = reactive({
+  carName: '',
+  carOwner: '',
+  licensePlate: '',
+  dateTime: ''
+})
+
+function onFileChange(e) {
+  file.value = e.target.files[0]
+  coverUrl.value = URL.createObjectURL(file.value)
+}
+
+async function save() {
+  const image = await imageService.uploadImage(file.value)
+  currentCar.cover_attachment_key = image.attachment_key
+  await carService.saveCar(currentCar)
+  Object.assign(currentCar, {
+    carName: '',
+    carOwner: '',
+    licensePlate: '',
+    dateTime: '',
+    cover_attachment_key: ''
+  })
+  showForm.value = false
+}
+
+// export default {
+//   data() {
+//     return {
+//       addPhoto: 'nao',
+//       downloadURL: null
+//     }
+//   },
+//   methods: {
+//     openFileInput() {
+//       this.$refs.fileInput.click()
+//     },
+//     handleFileChange(event) {
+//       const file = event.target.files[0]
+//       if (file) {
+//         // Use o URL.createObjectURL para criar uma URL temporária para o arquivo
+//         const fileURL = URL.createObjectURL(file)
+//         this.downloadURL = fileURL
+//       }
+//     }
+//   }
+// }
+</script>
+
 <template>
   <div class="flex items-center justify-center">
     <div class="mx-auto w-full max-w-[550px]">
-      <h1 class="text-4xl font-bold text-center text-gray-900 dark:text-white">Cadastro</h1>
+      <h1 class="text-4xl font-bold text-center text-gray-900 dark:text-white">
+        Cadastro de Carros
+      </h1>
       <br />
       <form action="" method="">
         <div class="-mx-3 flex flex-wrap">
@@ -145,27 +203,3 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      addPhoto: 'nao',
-      downloadURL: null
-    }
-  },
-  methods: {
-    openFileInput() {
-      this.$refs.fileInput.click()
-    },
-    handleFileChange(event) {
-      const file = event.target.files[0]
-      if (file) {
-        // Use o URL.createObjectURL para criar uma URL temporária para o arquivo
-        const fileURL = URL.createObjectURL(file)
-        this.downloadURL = fileURL
-      }
-    }
-  }
-}
-</script>
