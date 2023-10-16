@@ -22,7 +22,7 @@
         <div class="flex items-center space-x-5">
           <a
             class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
-            href="/novoCarro"
+            href="/previewform"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
