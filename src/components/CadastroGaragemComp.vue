@@ -58,20 +58,20 @@ async function save() {
   <div class="flex items-center justify-center">
     <div class="mx-auto w-full max-w-[550px]">
       <h1 class="text-4xl font-bold text-center text-gray-900 dark:text-white">
-        Cadastro de Carros
+        Cadastro de Garagens
       </h1>
       <br />
       <form action="" method="">
         <div class="-mx-3 flex flex-wrap">
           <div class="w-full px-3 sm:w-1/2">
             <div class="mb-5">
-              <label for="fName" class="mb-3 flex text-base font-medium text-[#07074D]">
-                Nome do Carro
+              <label for="name" class="mb-3 flex text-base font-medium text-[#07074D]">
+                Nome da Garagem
               </label>
               <input
                 type="text"
-                name="fName"
-                id="fName"
+                name="name"
+                id="name"
                 placeholder="Digite aqui"
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
@@ -79,62 +79,19 @@ async function save() {
           </div>
           <div class="w-full px-3 sm:w-1/2">
             <div class="mb-5">
-              <label for="lName" class="mb-3 flex text-base font-medium text-[#07074D]">
-                Nome do Dono do Carro
+              <label for="endereco" class="mb-3 flex text-base font-medium text-[#07074D]">
+                Endereço
               </label>
               <input
                 type="text"
-                name="lName"
-                id="lName"
+                name="endereco"
+                id="endereco"
                 placeholder="Digite Aqui"
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
             </div>
           </div>
         </div>
-        <div class="mb-5">
-          <label for="guest" class="mb-3 flex text-base font-medium text-[#07074D]">
-            Placa do Carro
-          </label>
-          <input
-            type="text"
-            name="guest"
-            id="guest"
-            placeholder="XXXXYYYY"
-            min="0"
-            class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-          />
-        </div>
-
-        <div class="-mx-3 flex flex-wrap">
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <label for="date" class="mb-3 flex text-base font-medium text-[#07074D]">
-                Data
-              </label>
-              <input
-                type="date"
-                name="date"
-                id="date"
-                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
-            </div>
-          </div>
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <label for="time" class="mb-3 flex text-base font-medium text-[#07074D]">
-                Hora
-              </label>
-              <input
-                type="time"
-                name="time"
-                id="time"
-                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
-            </div>
-          </div>
-        </div>
-
         <div class="mb-5">
           <label class="mb-3 flex text-base font-medium text-[#07074D]"> Adicionar Foto? </label>
           <div class="flex items-center space-x-6">

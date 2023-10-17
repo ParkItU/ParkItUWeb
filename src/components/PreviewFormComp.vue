@@ -2,7 +2,7 @@
     <!-- component -->
 <section class="max-w-9xl mx-auto px-4 sm:px-6 lg:px-4 mb-12">
     <article>
-        <h2 class=" p-5 text-4xl text-center font-extrabold text-gray-900" >Escolha seu modelo de formulário:</h2>
+        <h2 class=" p-5 text-4xl text-center font-extrabold text-gray-900" >Escolha seu Modelo de Formulário:</h2>
         <section class="mt-6 flex gap-6">
             <article class="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl  transition duration-300 ease-in-out"
                 style="background-image: url(' /src/assets/images/garagempre.png');">
