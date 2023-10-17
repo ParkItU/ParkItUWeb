@@ -35,8 +35,8 @@ const router = createRouter({
       component: SobreView
     },
     {
-      path: '/novoCarro',
-      name: '/novoCarro',
+      path: '/cadastrocarro',
+      name: '/cadastrocarro',
       component: NewCarView
     },
     {
