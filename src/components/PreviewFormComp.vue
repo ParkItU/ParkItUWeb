@@ -9,7 +9,7 @@
                 <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity transition duration-300 ease-in-out"></div>
                 <div class="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
                     <h3 class="text-center">
-                        <a class="text-white text-7xl font-bold text-center" href="#">
+                        <a class="text-white text-7xl font-bold text-center" href="/cadastrogaragem">
                             <span class="absolute inset-0"></span>
                             Cadastro de garagens
                         </a>
