@@ -193,11 +193,12 @@ async function save() {
         </div>
 
         <div>
-          <button
+          <a
+          href="/garages"
             class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
           >
             Adicionar
-          </button>
+        </a>
         </div>
       </form>
     </div>
