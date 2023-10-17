@@ -11,7 +11,7 @@
         <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
           <div>
             <h2 class="text-4xl font-bold text-white">
-              A procura por estacionamento em sua região aumentou?
+              A procura por vagas aumentou! E Você quer melhorar o gerenciamento da sua garagem?
             </h2>
 
             <p class="max-w-xl mt-3 text-gray-300 font-bold">Junte-se a nós! Contrate a ParkItU.</p>
@@ -58,7 +58,8 @@
 
               <div class="mt-6">
                 <button
-                  class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                onclick=""
+                class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
                 >
                   Logar
                 </button>

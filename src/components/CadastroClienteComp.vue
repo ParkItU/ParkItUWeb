@@ -11,7 +11,7 @@
         <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
           <div>
             <h2 class="text-4xl font-bold text-white">
-              A procura por estacionamento em sua região aumentou?
+              A procura por vagas aumentou! E Você quer melhorar o gerenciamento da sua garagem?
             </h2>
 
             <p class="max-w-xl mt-3 text-gray-300 font-bold">Junte-se a nós! Contrate a ParkItU.</p>
