@@ -8,7 +8,9 @@ import LoginView from '../views/LoginView.vue'
 import CadastroClienteView from '../views/CadastroClienteView.vue'
 import HoraView from '../views/HoraView.vue'
 import PreviewFormView from '../views/PreviewFormView.vue'
-import CadastroGaragemViewView from '../views/CadastroGaragemView.vue'
+import CadastroGaragemView from '../views/CadastroGaragemView.vue'
+import PagamentoView from '../views/PagamentoView.vue'
+
 
 
 const router = createRouter({
@@ -65,7 +67,13 @@ const router = createRouter({
     {
       path: '/cadastrogaragem',
       name: '/cadastrogaragem',
-      component: CadastroGaragemViewView
+      component: CadastroGaragemView
+    },
+
+    {
+      path: '/pagamento',
+      name: '/pagamento',
+      component: PagamentoView
     },
 
 

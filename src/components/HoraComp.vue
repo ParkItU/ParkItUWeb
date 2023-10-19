@@ -37,18 +37,18 @@ onMounted(async () => {
         <p class="text-sm text-gray-600 text-justify mt-8 mb-6">Valor a pagar: *</p>
 
         <div class="flex justify-center space-x-4 my-4">
-          <button
+          <a
             href="/cars"
             class="bg-gradient-to-r from-cyan-400 to-cyan-600 text-white px-4 py-2 rounded-md w-1/3"
           >
             Voltar
-          </button>
-          <button
-            href="#"
+        </a>
+          <a
+            href="/pagamento"
             class="bg-gradient-to-r from-cyan-400 to-cyan-600 text-white px-4 py-2 rounded-md w-1/3"
           >
             Pagar
-          </button>
+        </a>
         </div>
 
         <p class="text-xs text-gray-600 text-center mt-8">&copy; 2023 PARK ITU</p>
