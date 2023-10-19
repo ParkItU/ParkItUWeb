@@ -35,6 +35,10 @@ onMounted(async () => {
                 <h4 v-for="car in cars" :key="car.id" class="text-lg text-gray-500">
                   {{ car.carOwner }}
                 </h4>
+                <h4 v-for="car in cars" :key="car.id" class="text-lg text-gray-500">
+                  {{ car.date }}
+                </h4>
+
 
                 <br />
                 <br />
