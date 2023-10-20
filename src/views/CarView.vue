@@ -8,6 +8,7 @@ import FooterComp from '../components/FooterComp.vue'
   <main>
     <NavBarComp />
     <CarsComp />
+    <br />
     <FooterComp />
   </main>
 </template>

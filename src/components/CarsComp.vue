@@ -1,66 +1,65 @@
-<script setup>
-import { ref, onMounted } from 'vue'
-
-import carService from '@/services/cars.js'
-
-const cars = ref([])
-
-onMounted(async () => {
-  const data = await carService.getAllCars()
-  cars.value = data
-})
-</script>
 <template>
-  <!-- component -->
-  <div class="bg-white">
-    <div class="container mx-auto px-6 py-16 xl:w-[200%]">
-      <div class="mx-auto sm:w-6/12 lg:w-5/12 xl:w-[200%]">
-        <div>
-          <h1 class="text-3xl">Carros na Garagem</h1>
-          <br />
-        </div>
-
-        <div class="mt-4">
-          <div class="relative flex flex-col justify-end overflow-hidden rounded-b-xl pt-6">
-            <div
-              class="group relative flex cursor-pointer justify-between rounded-xl bg-gray-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-blue-500 before:opacity-0 before:transition before:duration-500 hover:before:opacity-50"
-            >
-              <div class="relative space-y-1 p-4">
-                <h4 v-for="car in cars" :key="car.id" class="text-lg text-gray-900">
-                  {{ car.carName }} - {{ car.licensePlate }}
-                </h4>
-                <h4 v-for="car in cars" :key="car.id" class="text-lg text-gray-500">
-                  {{ car.carOwner }} - {{ car.carOwnerPhone }}
-                </h4>
-                <h4 v-for="car in cars" :key="car.id" class="text-lg text-gray-500">
-                  {{ car.date }}
-                </h4>
-
-                <br />
-                <br />
-                <div class="relative h-6 text-gray-800 text-sm">
-                  <!-- BOTÃO COM O MÉTODO DELETE -->
-
-                  <span class="transition duration-300 group-hover:invisible group-hover:opacity-0"
-                    ><img class="h-8 object-cover" src="/public/hora.png" alt="Logo" />
-                  </span>
-                  <a
-                    class="flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0 text-blue-500"
-                    href="/hora"
-                  >
-                    <span><img class="h-8 object-cover" src="/public/hora.png" alt="Logo" /></span>
-                  </a>
-                </div>
+  <div>
+    <h1 class="text-3xl text-center mb-4">Carros na Garagem:</h1>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div v-for="car in cars" :key="car.id">
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <div class="flex items-start space-x-4">
+            <!-- Ícone de relógio com link para a página de hora -->
+            <div>
+              <div class="space-y-2">
+                <h4 class="text-lg text-gray-900">{{ car.carName }} - {{ car.licensePlate }}</h4>
+                <h4 class="text-lg text-gray-500">{{ car.carOwner }} - {{ car.carOwnerPhone }}</h4>
+                <h4 class="text-lg text-gray-500">{{ car.date }}</h4>
               </div>
-              <img
-                class="absolute bottom-0 right-0 w-[15rem] transition duration-300 group-hover:scale-[1.1]"
-                src="https://www.pngmart.com/files/4/Honda-Civic-PNG-Photo.png"
-                alt=""
-              />
+              <br />
+              <a :href="`/hora/${car.id}`" class="mr-4">
+                <img class="h-6 w-6 object-cover" src="/public/hora.png" alt="Relógio" />
+              </a>
             </div>
+            <!-- Imagem do veículo na extrema direita -->
+            <a :href="car.image" target="_blank" class="ml-auto">
+              <img class="object-cover h-32 w-32" :src="car.image" alt="Veículo" />
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import carService from '@/services/cars.js'
+
+const cars = ref([])
+const carsById = ref({})
+
+onMounted(async () => {
+  const data = await carService.getAllCars()
+  cars.value = data
+  data.forEach((car) => {
+    carsById.value[car.id] = car
+    // Use uma API de ícones ou URL válida para obter ícones de carros
+    fetchCarIcon(car.carName).then((iconUrl) => {
+      car.image = iconUrl
+    })
+  })
+})
+
+const getCarById = (id) => {
+  return carsById.value[id] || null
+}
+
+async function fetchCarIcon(carName) {
+  try {
+    // Use uma API de ícones para buscar um ícone relacionado ao nome do carro
+    // Neste exemplo, estamos usando o Unsplash
+    const response = await fetch(`https://source.unsplash.com/100x100/?car,${carName}`)
+    return response.url
+  } catch (error) {
+    console.error('Erro ao buscar ícone do carro:', error)
+    return ''
+  }
+}
+</script>

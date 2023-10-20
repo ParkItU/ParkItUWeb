@@ -1,59 +1,3 @@
-<script scoped>
-import { ref, reactive } from 'vue'
-import carService from '@/services/cars.js'
-
-const coverUrl = ref('')
-const file = ref(null)
-
-const currentCar = reactive({
-  carName: '',
-  carOwner: '',
-  licensePlate: '',
-  dateTime: ''
-})
-
-function onFileChange(e) {
-  file.value = e.target.files[0]
-  coverUrl.value = URL.createObjectURL(file.value)
-}
-
-async function save() {
-  const image = await imageService.uploadImage(file.value)
-  currentCar.cover_attachment_key = image.attachment_key
-  await carService.saveCar(currentCar)
-  Object.assign(currentCar, {
-    carName: '',
-    carOwner: '',
-    licensePlate: '',
-    dateTime: '',
-    cover_attachment_key: ''
-  })
-  showForm.value = false
-}
-
-// export default {
-//   data() {
-//     return {
-//       addPhoto: 'nao',
-//       downloadURL: null
-//     }
-//   },
-//   methods: {
-//     openFileInput() {
-//       this.$refs.fileInput.click()
-//     },
-//     handleFileChange(event) {
-//       const file = event.target.files[0]
-//       if (file) {
-//         // Use o URL.createObjectURL para criar uma URL temporária para o arquivo
-//         const fileURL = URL.createObjectURL(file)
-//         this.downloadURL = fileURL
-//       }
-//     }
-//   }
-// }
-</script>
-
 <template>
   <div class="flex items-center justify-center">
     <div class="mx-auto w-full max-w-[550px]">
@@ -61,7 +5,7 @@ async function save() {
         Cadastro de Garagens
       </h1>
       <br />
-      <form action="" method="">
+      <form @submit.prevent="save">
         <div class="-mx-3 flex flex-wrap">
           <div class="w-full px-3 sm:w-1/2">
             <div class="mb-5">
@@ -69,6 +13,7 @@ async function save() {
                 Nome da Garagem
               </label>
               <input
+                v-model="currentGarage.nameGarage"
                 type="text"
                 name="name"
                 id="name"
@@ -83,6 +28,7 @@ async function save() {
                 Endereço
               </label>
               <input
+                v-model="currentGarage.addressGarage"
                 type="text"
                 name="endereco"
                 id="endereco"
@@ -150,14 +96,71 @@ async function save() {
         </div>
 
         <div>
-          <a
-          href="/garages"
+          <button
+            type="submit"
             class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
           >
             Adicionar
-        </a>
+          </button>
         </div>
       </form>
     </div>
   </div>
 </template>
+
+<script>
+import { ref, reactive } from 'vue'
+import axios from 'axios'
+
+const currentGarage = reactive({
+  nameGarage: '',
+  addressGarage: ''
+})
+
+const addPhoto = ref('nao')
+const downloadURL = ref(null)
+
+async function save() {
+  try {
+    // Envie os dados da garagem para a API
+    const response = await axios.post(
+      'https://backendparkitu-dev.fl0.io/api/garages/',
+      currentGarage
+    )
+    console.log('Garagem cadastrada com sucesso:', response.data)
+
+    // Limpe os campos do formulário
+    Object.assign(currentGarage, {
+      nameGarage: '',
+      addressGarage: ''
+    })
+
+    // Redirecione para a rota /garagens
+    this.$router.push('/garages')
+  } catch (error) {
+    console.error('Erro ao cadastrar a garagem:', error)
+  }
+}
+
+function handleFileChange(event) {
+  const file = event.target.files[0]
+  if (file) {
+    // Use o URL.createObjectURL para criar uma URL temporária para o arquivo
+    downloadURL.value = URL.createObjectURL(file)
+  }
+}
+
+export default {
+  data() {
+    return {
+      currentGarage,
+      addPhoto,
+      downloadURL
+    }
+  },
+  methods: {
+    save,
+    handleFileChange
+  }
+}
+</script>

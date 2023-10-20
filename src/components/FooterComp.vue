@@ -13,7 +13,7 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap text-left lg:text-left">
         <div class="w-full lg:w-6/12 px-4">
-          <h4 class="text-2xl fonat-semibold text-blueGray-700">Gerenciou?ParkItU-tou</h4>
+          <h4 class="text-2xl fonat-semibold text-blueGray-700">Gerenciou? ParkItU-tou!</h4>
           <h5 class="text-lg mt-0 mb-2 text-blueGray-600">
             Curtiu a nossa plataforma? Saiba mais da nossa organização
           </h5>

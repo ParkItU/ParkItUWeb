@@ -11,15 +11,14 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="bg-white">
-    <div class=" ">
+  <div class="bg-white ">
+    <div class="">
       <div class="mx-auto sm:w-6/12 lg:w-5/12 xl:w-[200%]">
         <div>
           <!-- Request of backend is login username -->
           <h1 class="text-3xl">Olá manoel.gomes@gmail.com</h1>
           <p class="mt-2 text-gray-600">Selecione uma Garagem:</p>
         </div>
-<div></div>
         <div class="mt-4">
           <div class="relative flex flex-col justify-end overflow-hidden rounded-b-xl pt-6">
             <div

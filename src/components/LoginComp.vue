@@ -1,9 +1,9 @@
 <template>
   <!-- component -->
-  <div class="bg-white dark:bg-gray-900">
+  <div>
     <div class="flex h-screen">
       <div
-        class="hidden bg-cover lg:flex lg:w-2/4"
+        class="bg-cover lg:w-1/2"
         style="
           background-image: url(https://media.istockphoto.com/id/636444558/pt/foto/vazio-estacionamento-lotes-vista-a%C3%A9rea.jpg?s=612x612&w=0&k=20&c=zhhTe_I5mf_kXAeoB-yKHH_JNQKmBttbRNDRbzbHg2c=);
         "
@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <div class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
+      <div class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6 text-center">
         <div class="flex-1">
           <div class="text-center">
             <h2 class="text-4xl font-bold text-center text-gray-700 dark:text-white">Login</h2>
@@ -58,12 +58,12 @@
 
               <div class="mt-6">
                 <a
-                href="/garages"
-                onclick=""
-                class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                  href="/garages"
+                  onclick=""
+                  class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
                 >
                   Logar
-              </a>
+                </a>
               </div>
             </form>
 
