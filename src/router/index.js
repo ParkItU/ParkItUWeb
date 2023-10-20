@@ -53,9 +53,10 @@ const router = createRouter({
     },
 
     {
-      path: '/hora',
-      name: '/hora',
-      component: HoraView
+      path: '/hora/:carId',
+      name: 'HoraView',
+      component: HoraView,
+      props: true, // Isso permite que você passe o parâmetro carId como uma propriedade
     },
 
     {

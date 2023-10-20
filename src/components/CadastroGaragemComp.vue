@@ -28,7 +28,7 @@
                 Endereço
               </label>
               <input
-                v-model="currentGarage.addressGarage"
+                v-model="currentGarage.adressGarage"
                 type="text"
                 name="endereco"
                 id="endereco"
@@ -36,62 +36,6 @@
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
             </div>
-          </div>
-        </div>
-        <div class="mb-5">
-          <label class="mb-3 flex text-base font-medium text-[#07074D]"> Adicionar Foto? </label>
-          <div class="flex items-center space-x-6">
-            <div class="flex items-center">
-              <input
-                type="radio"
-                name="radio1"
-                id="radioButton1"
-                class="h-5 w-5"
-                v-model="addPhoto"
-                value="sim"
-              />
-              <label for="radioButton1" class="pl-3 text-base font-medium text-[#07074D]">
-                Sim
-              </label>
-            </div>
-            <div class="flex items-center">
-              <input
-                type="radio"
-                name="radio1"
-                id="radioButton2"
-                class="h-5 w-5"
-                v-model="addPhoto"
-                value="nao"
-              />
-              <label for="radioButton2" class="pl-3 text-base font-medium text-[#07074D]">
-                Não
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div v-if="addPhoto === 'sim'">
-          <!-- Seção de Upload de Fotos -->
-          <div class="mb-6 pt-4">
-            <label class="mb-5 flex text-xl font-semibold text-[#07074D]"> Upload File </label>
-
-            <div class="mb-8">
-              <input type="file" name="file" id="file" class="sr-only" @change="handleFileChange" />
-              <label
-                for="file"
-                class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
-              >
-                <div>
-                  <span
-                    class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
-                  >
-                    Browse
-                  </span>
-                </div>
-              </label>
-            </div>
-
-            <img v-if="downloadURL" :src="downloadURL" alt="Uploaded Image" class="max-h-48 my-3" />
           </div>
         </div>
 
@@ -114,7 +58,7 @@ import axios from 'axios'
 
 const currentGarage = reactive({
   nameGarage: '',
-  addressGarage: ''
+  adressGarage: ''
 })
 
 const addPhoto = ref('nao')
@@ -142,14 +86,6 @@ async function save() {
   }
 }
 
-function handleFileChange(event) {
-  const file = event.target.files[0]
-  if (file) {
-    // Use o URL.createObjectURL para criar uma URL temporária para o arquivo
-    downloadURL.value = URL.createObjectURL(file)
-  }
-}
-
 export default {
   data() {
     return {
@@ -159,8 +95,7 @@ export default {
     }
   },
   methods: {
-    save,
-    handleFileChange
+    save
   }
 }
 </script>

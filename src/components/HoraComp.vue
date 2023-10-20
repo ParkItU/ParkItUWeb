@@ -4,12 +4,11 @@
       <div class="flex justify-center mb-8">
         <img src="/src/assets/images/SFestacionamentos.png" alt="Logo" class="w-30 h-20" />
       </div>
-      <h1
-        v-for="car in cars"
-        :key="car.id"
-        class="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6"
-      >
-        <span class="font-extrabold text-lg text-gray-900"> R$5,00 a Hora - {{ car.carName }} do {{ car.carOwner}} </span>
+      <h1 class="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6">
+        <span class="font-extrabold text-lg text-gray-900">
+          R$5,00 / Hora - {{ car?.carName || 'Carro não encontrado' }} do
+          {{ car?.carOwner || 'Proprietário não encontrado' }}
+        </span>
       </h1>
       <label for="entryTime" class="text-sm text-gray-600 text-justify mt-8 mb-6">
         Entrada :
@@ -28,9 +27,8 @@
         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
       />
       <p class="font-extrabold text-sm text-gray-600 text-justify mt-8 mb-6">
-        Valor a pagar: R$ {{ calculateParkingFee() }},00
+        Valor a pagar: R$ {{ calculateParkingFee }},00
       </p>
-
       <div class="flex justify-center space-x-4 my-4">
         <a
           href="/cars"
@@ -52,30 +50,40 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-
+import { ref, onMounted, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import axios from 'axios' // Import the Axios library
 import carService from '@/services/cars.js'
 
-const cars = ref([])
-const entryTime = ref('00:00') // Hora de entrada padrão
-const exitTime = ref('00:00') // Hora de saída padrão
-const parkingRate = 5 // Taxa de estacionamento por hora
+const car = ref(null)
+const entryTime = ref('00:00')
+const exitTime = ref('00:00')
+const parkingRate = 5
+
+const route = useRoute()
+const carId = ref(route.params.carId)
 
 onMounted(async () => {
-  const data = await carService.getAllCars()
-  cars.value = data
+  try {
+    // Fetch car data using Axios
+    const response = await axios.get(`https://backendparkitu-dev.fl0.io/api/cars/${carId.value}`)
+    car.value = response.data
+  } catch (error) {
+    console.error('Erro ao carregar informações do carro:', error)
+  }
 })
 
-const calculateParkingFee = () => {
+const calculateParkingFee = computed(() => {
   const entryHour = parseInt(entryTime.value.split(':')[0])
   const entryMinute = parseInt(entryTime.value.split(':')[1])
   const exitHour = parseInt(exitTime.value.split(':')[0])
   const exitMinute = parseInt(exitTime.value.split(':')[1])
 
   const totalTimeInMinutes = exitHour * 60 + exitMinute - (entryHour * 60 + entryMinute)
-  const totalHours = totalTimeInMinutes / 60
-  const parkingFee = totalHours * parkingRate
+  const parkingFee = (totalTimeInMinutes / 60) * parkingRate
 
   return parkingFee
-}
+})
+
+const valorAPagar = computed(() => calculateParkingFee.value)
 </script>

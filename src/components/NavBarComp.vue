@@ -21,7 +21,7 @@
         </div>
         <div class="flex items-center space-x-5">
           <a
-            class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
+            class="flex text-gray-600 cursor-pointer transition-colors duration-300"
             href="/previewform"
           >
             <svg
@@ -43,7 +43,7 @@
             Novo
           </a>
           <a
-            class="flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold text-blue-600"
+            class="flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold"
             href="/"
           >
             <svg
