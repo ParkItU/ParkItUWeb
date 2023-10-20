@@ -14,7 +14,7 @@
           <a href="/garages" class="cursor-pointer">
             <img
               class="h-12 object-cover font-sans"
-              src="src/assets/images/ParkItU.png"
+              src="src/assets/images/estacionamento.png"
               alt="Logo"
             />
           </a>
