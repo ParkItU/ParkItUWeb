@@ -9,7 +9,7 @@
         :key="car.id"
         class="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6"
       >
-        <span class="font-extrabold text-lg text-gray-900"> R$5,00 / Hora - {{ car.carName }} </span>
+        <span class="font-extrabold text-lg text-gray-900"> R$5,00 a Hora - {{ car.carName }} do {{ car.carOwner}} </span>
       </h1>
       <label for="entryTime" class="text-sm text-gray-600 text-justify mt-8 mb-6">
         Entrada :
@@ -28,7 +28,7 @@
         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
       />
       <p class="font-extrabold text-sm text-gray-600 text-justify mt-8 mb-6">
-        Valor a pagar: R$ {{ calculateParkingFee() }}
+        Valor a pagar: R$ {{ calculateParkingFee() }},00
       </p>
 
       <div class="flex justify-center space-x-4 my-4">

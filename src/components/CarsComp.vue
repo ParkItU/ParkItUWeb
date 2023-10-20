@@ -27,18 +27,14 @@ onMounted(async () => {
             >
               <div class="relative space-y-1 p-4">
                 <h4 v-for="car in cars" :key="car.id" class="text-lg text-gray-900">
-                  {{ car.carName }}
+                  {{ car.carName }} - {{ car.licensePlate }}
                 </h4>
                 <h4 v-for="car in cars" :key="car.id" class="text-lg text-gray-500">
-                  {{ car.licensePlate }}
-                </h4>
-                <h4 v-for="car in cars" :key="car.id" class="text-lg text-gray-500">
-                  {{ car.carOwner }}
+                  {{ car.carOwner }} - {{ car.carOwnerPhone }}
                 </h4>
                 <h4 v-for="car in cars" :key="car.id" class="text-lg text-gray-500">
                   {{ car.date }}
                 </h4>
-
 
                 <br />
                 <br />

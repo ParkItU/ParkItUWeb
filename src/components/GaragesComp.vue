@@ -39,7 +39,7 @@ onMounted(async () => {
                   <a
                     href="/cars"
                     class="flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0 text-blue-500"
-                  >
+                    >
                     <span>Ver Carros</span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
