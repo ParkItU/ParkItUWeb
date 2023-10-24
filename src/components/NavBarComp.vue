@@ -1,4 +1,3 @@
-<script setup></script>
 <template>
   <div
     class="flex flex-col items-center justify-center mt-32"
@@ -14,8 +13,8 @@
           <a href="/garages" class="cursor-pointer">
             <img
               class="h-12 object-cover font-sans"
-              src="src/assets/images/estacionamento.png"
-              alt="Logo"
+              :src="estacionamentoImage"
+              alt="Estacionamento"
             />
           </a>
         </div>
@@ -66,3 +65,7 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import estacionamentoImage from '@/assets/images/estacionamento.png'
+</script>
