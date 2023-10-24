@@ -6,7 +6,8 @@
       </div>
       <h1 class="text-center text-3xl font-extrabold text-gray-900 mb-1">Total a pagar:</h1>
       <p class="text-center text-2xl font-extrabold text-green-600 mb-1">
-        R$ {{ valorAPagar.toFixed(2) }}
+        <!-- R$ {{ valorAPagar.toFixed(2) }} -->
+        R$10,00
       </p>
       <!-- Exibe o valor atualizado -->
       <div class="flex items-center justify-center">

@@ -28,6 +28,7 @@
       />
       <p class="font-extrabold text-sm text-gray-600 text-justify mt-8 mb-6">
         Valor a pagar: R$ {{ calculateParkingFee }},00
+        <!-- Valor a pagar: R$10,00 -->
       </p>
       <div class="flex justify-center space-x-4 my-4">
         <a
