@@ -81,6 +81,23 @@
               />
             </div>
           </div>
+          <div class="w-full px-3 sm:w-1/2">
+            <div class="mb-5">
+              <label for="garage" class="mb-3 flex text-base font-medium text-[#07074D]">
+                Escolha a Garagem
+              </label>
+              <select
+                v-model="currentCar.garageId"
+                name="garage"
+                id="garage"
+                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              >
+                <option v-for="garage in garages" :key="garage.id" :value="garage.id">
+                  {{ garage.nameGarage }}
+                </option>
+              </select>
+            </div>
+          </div>
         </div>
 
         <div>
@@ -96,43 +113,42 @@
   </div>
 </template>
 
-<script>
-import { ref, reactive } from 'vue'
+<script setup>
+import { ref, reactive, onMounted } from 'vue'
 import axios from 'axios'
+import garageService from '@/services/garages.js'
 
 const currentCar = reactive({
   carName: '',
   carOwner: '',
   licensePlate: '',
   dateTime: '',
-  carOwnerPhone: ''
+  carOwnerPhone: '',
+  garageId: null
+})
+
+const garages = ref([])
+
+onMounted(async () => {
+  const data = await garageService.getAllGarages()
+  garages.value = data
 })
 
 async function save() {
   try {
     const response = await axios.post('https://backendparkitu-dev.fl0.io/api/cars/', currentCar)
     console.log('Carro cadastrado com sucesso:', response.data)
-    // Limpe os campos do formulário
     Object.assign(currentCar, {
       carName: '',
       carOwner: '',
       licensePlate: '',
       dateTime: '',
-      carOwnerPhone: '' // Limpe o campo de número de telefone
+      carOwnerPhone: '',
+      garageId: null
     })
     this.$router.push('/cars')
   } catch (error) {
     console.error('Erro ao cadastrar o carro:', error)
-  }
-}
-export default {
-  data() {
-    return {
-      currentCar
-    }
-  },
-  methods: {
-    save
   }
 }
 </script>

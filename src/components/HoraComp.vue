@@ -31,18 +31,18 @@
         <!-- Valor a pagar: R$10,00 -->
       </p>
       <div class="flex justify-center space-x-4 my-4">
-        <a
-          href="/cars"
+        <router-link
+          to="/cars"
           class="bg-gradient-to-r from-cyan-400 to-cyan-600 text-white px-4 py-2 rounded-md w-1/3"
         >
           Voltar
-        </a>
-        <a
-          href="/pagamento"
+      </router-link>
+        <router-link
+          to="/pagamento"
           class="bg-gradient-to-r from-cyan-400 to-cyan-600 text-white px-4 py-2 rounded-md w-1/3"
         >
           Pagar
-        </a>
+    </router-link>
       </div>
 
       <p class="text-xs text-gray-600 text-center mt-8">&copy; 2023 PARK ITU</p>

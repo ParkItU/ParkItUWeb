@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <div class="flex items-center w-full max-w-md  mx-auto lg:w-2/6 text-center">
+      <div class="flex items-center w-full max-w-md mx-auto lg:w-2/6 text-center">
         <div class="flex-1">
           <div class="text-center">
             <h2 class="text-3xl font-bold text-center text-gray-700 dark:text-white">Cadastro</h2>
@@ -100,21 +100,21 @@
               </div>
 
               <div class="mt-6">
-                <a
-                href="/"
+                <router-link
+                  to="/"
                   class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50 mx-auto"
                 >
                   Cadastar
-              </a>
+                </router-link>
               </div>
             </form>
 
             <p class="mt-6 text-sm text-center text-gray-400">
               Já tem uma conta?
-              <a
-                href="/"
+              <router-link
+                to="/"
                 class="text-blue-500 focus:outline-none focus:underline hover:underline"
-                >Faça Login</a
+                >Faça Login</router-link
               >
             </p>
           </div>

@@ -1,12 +1,12 @@
 <template>
   <!-- component -->
-  <link
+  <router-link
     rel="stylesheet"
-    href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
+    to="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
   />
-  <link
+  <router-link
     rel="stylesheet"
-    href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+    to="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
   />
 
   <footer class="relative pt-8 pb-6">
@@ -22,7 +22,7 @@
               class="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
               type="button"
             >
-              <a href="https://github.com/ParkItU" class="fab fa-github"></a>
+              <router-link to="https://github.com/ParkItU" class="fab fa-github"></router-link>
             </button>
           </div>
         </div>
@@ -34,17 +34,17 @@
               >
               <ul class="list-unstyled">
                 <li>
-                  <a
+                  <router-link
                     class="text-blueGray-600 hover:text-blueGray-800 font-semibold flex pb-2 text-sm"
-                    href="/ajuda"
-                    >Ajuda</a
+                    to="/ajuda"
+                    >Ajuda</router-link
                   >
                 </li>
                 <li>
-                  <a
+                  <router-link
                     class="text-blueGray-600 hover:text-blueGray-800 font-semibold flex pb-2 text-sm"
-                    href="/sobre"
-                    >Sobre Nós</a
+                    to="/sobre"
+                    >Sobre Nós</router-link
                   >
                 </li>
               </ul>
@@ -58,11 +58,11 @@
           <div class="text-sm text-blueGray-500 font-semibold py-1">
             Copyright © <span id="get-current-year">2023</span>
             <!-- <a href="https://www.creative-tim.com/product/notus-js" class="text-blueGray-500 hover:text-gray-800" target="_blank"> Notus JS by -->
-            <a
-              href=""
+            <router-link
+              to=""
               class=""
             >
-              ParkItU</a
+              ParkItU</router-link
             >.
           </div>
         </div>

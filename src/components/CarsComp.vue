@@ -1,34 +1,41 @@
 <template>
   <div>
-    <h1 class="text-3xl text-center mb-4">Carros na Garagem:</h1>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <div v-for="car in cars" :key="car.id" class="mb-4">
-        <div
-          class="group relative bg-white p-4 rounded-lg shadow-md cursor-pointer hover:opacity-90"
-        >
-          <div class="flex items-start space-x-4">
-            <div>
-              <div class="space-y-2">
-                <h4 class="text-lg text-gray-900">{{ car.carName }} - {{ car.licensePlate }}</h4>
-                <h4 class="text-lg text-gray-500">{{ car.carOwner }} - {{ car.carOwnerPhone }}</h4>
-                <h4 class="text-lg text-gray-500">{{ car.date }}</h4>
+    <h1 class="text-3xl text-center mb-4">Carros nas Garagens:</h1>
+    <div v-for="garageId in Object.keys(carsByGarage)" :key="garageId">
+      <h2 class="text-2xl mt-4 mb-2">{{ garagesById[garageId].nameGarage }}</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div v-for="carId in carsByGarage[garageId]" :key="carId" class="mb-4">
+          <div
+            class="group relative bg-white p-4 rounded-lg shadow-md cursor-pointer hover:opacity-90"
+          >
+            <div class="flex items-start space-x-4">
+              <div>
+                <div class="space-y-2">
+                  <h4 class="text-lg text-gray-900">
+                    {{ carsById[carId].carName }} - {{ carsById[carId].licensePlate }}
+                  </h4>
+                  <h4 class="text-lg text-gray-500">
+                    {{ carsById[carId].carOwner }} - {{ carsById[carId].carOwnerPhone }}
+                  </h4>
+                  <h4 class="text-lg text-gray-500">{{ carsById[carId].date }}</h4>
+                </div>
+                <br />
+                <router-link :to="'/hora/' + carId" class="mr-4 group">
+                  <img
+                    class="h-6 w-6 object-cover transition-transform transform scale-100 group-hover:scale-150"
+                    src="/public/hora.png"
+                    alt="Relógio"
+                  />
+                </router-link>
               </div>
-              <br />
-              <a :href="'/hora/' + car.id" class="mr-4 group">
+              <router-link :to="carsById[carId].image" target="_blank" class="ml-auto">
                 <img
-                  class="h-6 w-6 object-cover transition-transform transform scale-100 group-hover:scale-150"
-                  src="/public/hora.png"
-                  alt="Relógio"
+                  class="object-cover h-32 w-32"
+                  :src="getOptimizedImage(carsById[carId].image)"
+                  alt="Veículo"
                 />
-              </a>
+              </router-link>
             </div>
-            <a :href="car.image" target="_blank" class="ml-auto">
-              <img
-                class="object-cover h-32 w-32"
-                :src="getOptimizedImage(car.image)"
-                alt="Veículo"
-              />
-            </a>
           </div>
         </div>
       </div>
@@ -38,27 +45,30 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router' // Importe o useRouter
-
 import carService from '@/services/cars.js'
 
 const cars = ref([])
-const carsById = ref({})
+const carsByGarage = ref({})
+const garagesById = ref({})
 
-onMounted(async () => {
+const fetchCars = async () => {
   const data = await carService.getAllCars()
   cars.value = data
   data.forEach((car) => {
-    carsById.value[car.id] = car
+    if (!carsByGarage.value[car.garageId]) {
+      carsByGarage.value[car.garageId] = []
+    }
+    carsByGarage.value[car.garageId].push(car.id)
+    garagesById.value[car.garageId] = car.garage
     fetchCarIcon(car.carName).then((iconUrl) => {
       car.image = iconUrl
     })
   })
-})
-
-const getCarById = (id) => {
-  return carsById.value[id] || null
 }
+
+onMounted(fetchCars)
+
+// Removido o getById, pois não estava sendo utilizado.
 
 async function fetchCarIcon(carName) {
   try {
@@ -70,19 +80,10 @@ async function fetchCarIcon(carName) {
   }
 }
 
-// Função para otimizar o carregamento de imagens
 function getOptimizedImage(imageUrl) {
-  // Verifique se a imagem já foi carregada e armazene-a em cache
   if (localStorage && localStorage[imageUrl]) {
     return localStorage[imageUrl]
   }
-
-  // Se não estiver em cache, retorne a URL original
   return imageUrl
-}
-
-const redirectToHoraPage = (carId) => {
-  const router = useRouter()
-  router.push(`/hora/${carId}`)
 }
 </script>

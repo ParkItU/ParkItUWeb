@@ -10,18 +10,18 @@
         class="flex justify-around py-4 bg-white/80 backdrop-blur-md shadow-md w-full fixed top-0 left-0 right-0 z-10"
       >
         <div class="flex items-center">
-          <a href="/garages" class="cursor-pointer">
+          <router-link to="/garages" class="cursor-pointer">
             <img
               class="h-12 object-cover font-sans"
               :src="estacionamentoImage"
               alt="Estacionamento"
             />
-          </a>
+          </router-link>
         </div>
         <div class="flex items-center space-x-5">
-          <a
+          <router-link
             class="flex text-gray-600 cursor-pointer transition-colors duration-300"
-            href="/previewform"
+            to="/previewform"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -40,10 +40,10 @@
               />
             </svg>
             Novo
-          </a>
-          <a
+          </router-link>
+          <router-link
             class="flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold"
-            href="/"
+            to="/"
           >
             <svg
               class="fill-current h-5 w-5 mr-2 mt-0.5"
@@ -59,7 +59,7 @@
               />
             </svg>
             Logout
-          </a>
+          </router-link>
         </div>
       </nav>
     </div>

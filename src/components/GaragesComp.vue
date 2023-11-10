@@ -1,11 +1,11 @@
 <template>
   <div class="bg-white">
-    <div class="mx-auto sm:w-6/12 lg:w-5/12 xl:w-[200%]">
+    <div class="mx-auto sm:w-6/12 lg:w-5/12 xl:w-[50%]">
       <div>
         <h1 class="text-3xl">Olá manoel.gomes@gmail.com</h1>
         <p class="mt-2 text-gray-600">Selecione uma Garagem:</p>
       </div>
-      <div class="mt-4">
+      <div class="mt-6">
         <div v-for="garage in garages" :key="garage.id" class="mb-4">
           <div
             class="group relative bg-white p-4 rounded-lg shadow-md cursor-pointer hover:opacity-90"
@@ -17,8 +17,8 @@
                 <span class="transition duration-300 group-hover:invisible group-hover:opacity-0"
                   >Ver Carros</span
                 >
-                <a
-                  href="/cars"
+                <router-link
+                  :to="{ name: 'cars', params: { garageId: garage.id } }"
                   class="flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0 text-blue-500"
                 >
                   <span>Ver Carros</span>
@@ -34,7 +34,7 @@
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                </a>
+                </router-link>
               </div>
             </div>
             <img
