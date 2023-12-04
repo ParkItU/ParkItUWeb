@@ -67,7 +67,7 @@ const carId = ref(route.params.carId)
 onMounted(async () => {
   try {
     // Fetch car data using Axios
-    const response = await axios.get(`https://backendparkitu-dev.fl0.io/api/cars/${carId.value}`)
+    const response = await axios.get(`https://backendparkitu-pro.4.us-1.fl0.io/api/cars/${carId.value}`)
     car.value = response.data
   } catch (error) {
     console.error('Erro ao carregar informações do carro:', error)

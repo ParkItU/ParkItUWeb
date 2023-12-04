@@ -57,7 +57,7 @@ export default {
     async save() {
       try {
         // Send garage data to the API
-        const response = await axios.post('https://backendparkitu-dev.fl0.io/api/garages/', this.currentGarage);
+        const response = await axios.post('https://backendparkitu-pro.4.us-1.fl0.io/api/garages/', this.currentGarage);
         console.log('Garagem cadastrada com sucesso:', response.data);
 
         // Clear form fields

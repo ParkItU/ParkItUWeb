@@ -1,3 +1,5 @@
+<!-- GaragesComp.vue -->
+
 <template>
   <div class="bg-white">
     <div class="mx-auto sm:w-6/12 lg:w-5/12 xl:w-[50%]">
@@ -18,7 +20,10 @@
                   >Ver Carros</span
                 >
                 <router-link
-                  :to="{ name: 'cars', params: { garageId: garage.id } }"
+                  :to="{
+                    name: 'cars',
+                    params: { garageId: garage.id, nameGarage: garage.nameGarage }
+                  }"
                   class="flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0 text-blue-500"
                 >
                   <span>Ver Carros</span>

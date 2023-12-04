@@ -3,68 +3,86 @@
     <!-- Barra de Pesquisa -->
     <div class="search-bar mx-auto max-w-md p-4 bg-white rounded shadow-md mt-4 mb-4">
       <label for="searchInput" class="sr-only">Pesquisar Carro Por Placa:</label>
-      <input v-model="searchLicensePlate" type="text" id="searchInput" placeholder="Pesquisar Carro por Placa..."
-        class="w-full p-2 border rounded" />
+      <input
+        v-model="searchLicensePlate"
+        type="text"
+        id="searchInput"
+        placeholder="Pesquisar Carro por Placa..."
+        class="w-full p-2 border rounded"
+      />
     </div>
 
-    <div v-for="garageId in Object.keys(carsByGarage)" :key="garageId">
-      <h2 class="text-2xl mt-4 mb-2">{{ garagesById[garageId].nameGarage }}</h2>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <div v-for="carId in filteredCarsByGarage(garageId)" :key="carId" class="mb-4">
-          <div class="group relative bg-white p-4 rounded-lg shadow-md cursor-pointer hover:opacity-90">
-            <div class="flex items-start space-x-4">
-              <div>
-                <div class="space-y-2">
-                  <h4 class="text-lg text-gray-900">
-                    {{ carsById[carId].carName }} - {{ carsById[carId].licensePlate }}
-                  </h4>
-                  <h4 class="text-lg text-gray-500">
-                    {{ carsById[carId].carOwner }} - {{ carsById[carId].carOwnerPhone }}
-                  </h4>
-                  <h4 class="text-lg text-gray-500">{{ carsById[carId].date }}</h4>
-                </div>
-                <br />
-                <router-link :to="'/hora/' + carId" class="mr-4 group">
-                  <img class="h-6 w-6 object-cover transition-transform transform scale-100 group-hover:scale-150"
-                    src="/public/hora.png" alt="Relógio" />
-                </router-link>
-              </div>
-              <router-link :to="carsById[carId].image" target="_blank" class="ml-auto">
-                <img class="object-cover h-32 w-32" :src="getOptimizedImage(carsById[carId].image)" alt="Veículo" />
-              </router-link>
-            </div>
-          </div>
-        </div>
+    <h2 class="text-2xl mt-4 mb-2">{{ nameGarage }}</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div v-for="car in filteredCarsByGarage" :key="car.id" class="mb-4">
+        <CarCard :car="car" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, defineProps } from 'vue'
+import CarCard from '@/components/CarCard.vue'
 import carService from '@/services/cars.js'
+
+const props = defineProps(['garageId', 'nameGarage'])
 
 const cars = ref([])
 const carsByGarage = ref({})
 const garagesById = ref({})
-const searchLicensePlate = ref('');
+const carsById = ref({})
+const searchLicensePlate = ref('')
 
 const fetchCars = async () => {
-  const data = await carService.getAllCars()
-  cars.value = data
-  data.forEach((car) => {
-    if (!carsByGarage.value[car.garageId]) {
-      carsByGarage.value[car.garageId] = []
-    }
-    carsByGarage.value[car.garageId].push(car.id)
-    garagesById.value[car.garageId] = car.garage
-    fetchCarIcon(car.carName).then((iconUrl) => {
-      car.image = iconUrl
+  try {
+    const data = await carService.getAllCars()
+    cars.value = data
+
+    data.forEach((car) => {
+      const garageId = car.garageId
+
+      if (!carsByGarage.value[garageId]) {
+        carsByGarage.value[garageId] = []
+      }
+
+      carsByGarage.value[garageId].push(car.id)
+      garagesById.value[garageId] = car.garage
+
+      fetchCarIcon(car.carName).then((iconUrl) => {
+        car.image = iconUrl
+      })
+
+      fetchCarsInGarage(garageId)
+
+      carsById.value[car.id] = {
+        carName: car.carName,
+        licensePlate: car.licensePlate,
+        carOwner: car.carOwner,
+        carOwnerPhone: car.carOwnerPhone,
+        date: car.date,
+        image: car.image
+      }
     })
-  })
+  } catch (error) {
+    console.error('Erro ao buscar todos os carros:', error)
+  }
 }
 
 onMounted(fetchCars)
+
+const fetchCarsInGarage = async (garageId) => {
+  try {
+    const response = await fetch(
+      `https://backendparkitu-pro.4.us-1.fl0.io/api/carsingarage/?idGarage=${garageId}`
+    )
+    const data = await response.json()
+
+    carsByGarage.value[garageId] = data.map((item) => item.idCar)
+  } catch (error) {
+    console.error('Erro ao buscar carros na garagem:', error)
+  }
+}
 
 async function fetchCarIcon(carName) {
   try {
@@ -83,13 +101,19 @@ function getOptimizedImage(imageUrl) {
   return imageUrl
 }
 
-function filteredCarsByGarage(garageId) {
-  const filteredCars = carsByGarage.value[garageId].filter(carId => {
-    const car = cars.value.find(c => c.id === carId);
-    return car && car.licensePlate.includes(searchLicensePlate.value);
-  });
+function filteredCarsByGarage() {
+  const filteredCars =
+    carsByGarage.value[props.garageId]?.map((carId) => {
+      return carsById.value[carId]
+    }) || []
 
-  return filteredCars;
+  if (searchLicensePlate.value) {
+    return filteredCars.filter((car) => {
+      return car.licensePlate.includes(searchLicensePlate.value)
+    })
+  }
+
+  return filteredCars
 }
 </script>
 
