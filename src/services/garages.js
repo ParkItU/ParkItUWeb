@@ -1,10 +1,15 @@
+// garages.js
+
 import api from '../plugins/api'
 
-class GarageService {
-    async getAllGarages() {
-        const response = await api.get('/garages/')
-        return response.data
-    }
-}
-
-export default new GarageService()
+export default {
+    getAllGarages: async () => {
+        try {
+            const response = await api.get('/garages');
+            return response.data;
+        } catch (error) {
+            console.error('Erro ao buscar garagens:', error);
+            throw error;
+        }
+    },
+};
