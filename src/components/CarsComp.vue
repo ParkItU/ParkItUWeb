@@ -1,120 +1,94 @@
 <template>
   <div>
-    <!-- Barra de Pesquisa -->
     <div class="search-bar mx-auto max-w-md p-4 bg-white rounded shadow-md mt-4 mb-4">
       <label for="searchInput" class="sr-only">Pesquisar Carro Por Placa:</label>
-      <input
-        v-model="searchLicensePlate"
-        type="text"
-        id="searchInput"
-        placeholder="Pesquisar Carro por Placa..."
-        class="w-full p-2 border rounded"
-      />
+      <input v-model="searchLicensePlate" type="text" id="searchInput" placeholder="Pesquisar Carro por Placa..."
+        class="w-full p-2 border rounded search-input" />
     </div>
-
     <h2 class="text-2xl mt-4 mb-2">{{ nameGarage }}</h2>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <div v-for="car in filteredCarsByGarage" :key="car.id" class="mb-4">
-        <CarCard :car="car" />
+      <div v-for="carId in filteredCars" :key="carId" class="mb-4">
+        <!-- Update to use filteredCars -->
+        <div class="group relative bg-white p-4 rounded-lg shadow-md cursor-pointer hover:opacity-90">
+          <div class="flex items-start space-x-4">
+            <div>
+              <div class="space-y-2">
+                <h4 class="text-lg text-gray-900">{{ getCarInfo(carId, 'name') }}</h4>
+                <p class="text-gray-500">{{ getCarInfo(carId, 'owner') }}</p>
+                <p class="text-gray-500">{{ getCarInfo(carId, 'licensePlate') }}</p>
+              </div>
+              <br />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, defineProps } from 'vue'
-import CarCard from '@/components/CarCard.vue'
+import { onMounted, ref, computed } from 'vue' // Remove ref from here as it's part of the script setup
 import carService from '@/services/cars.js'
+import carInGarageService from '@/services/carsingarage.js'
 
 const props = defineProps(['garageId', 'nameGarage'])
 
 const cars = ref([])
-const carsByGarage = ref({})
-const garagesById = ref({})
-const carsById = ref({})
+const carsByGarage = ref([])
 const searchLicensePlate = ref('')
 
 const fetchCars = async () => {
   try {
-    const data = await carService.getAllCars()
-    cars.value = data
+    const allCars = await carService.getAllCars()
+    cars.value = allCars
 
-    data.forEach((car) => {
-      const garageId = car.garageId
+    const carsInGarage = await carInGarageService.getCarsInGarage(props.garageId)
+    const carIds = carsInGarage.map((car) => car.idCar).flat()
+    carsByGarage.value[props.garageId] = carIds
 
-      if (!carsByGarage.value[garageId]) {
-        carsByGarage.value[garageId] = []
-      }
-
-      carsByGarage.value[garageId].push(car.id)
-      garagesById.value[garageId] = car.garage
-
-      fetchCarIcon(car.carName).then((iconUrl) => {
-        car.image = iconUrl
-      })
-
-      fetchCarsInGarage(garageId)
-
-      carsById.value[car.id] = {
-        carName: car.carName,
-        licensePlate: car.licensePlate,
-        carOwner: car.carOwner,
-        carOwnerPhone: car.carOwnerPhone,
-        date: car.date,
-        image: car.image
-      }
-    })
+    return Promise.resolve() // Resolve a Promise quando os dados estiverem prontos
   } catch (error) {
-    console.error('Erro ao buscar todos os carros:', error)
+    console.error('Erro ao buscar carros:', error)
+    return Promise.reject(error) // Rejeita a Promise se houver um erro
   }
 }
 
-onMounted(fetchCars)
-
-const fetchCarsInGarage = async (garageId) => {
-  try {
-    const response = await fetch(
-      `https://backendparkitu-pro.4.us-1.fl0.io/api/carsingarage/?idGarage=${garageId}`
-    )
-    const data = await response.json()
-
-    carsByGarage.value[garageId] = data.map((item) => item.idCar)
-  } catch (error) {
-    console.error('Erro ao buscar carros na garagem:', error)
+const getCarInfo = (carId, infoType) => {
+  if (cars.value && cars.value.length > 0) {
+    const car = cars.value.find((car) => car.id.toString() === carId.toString())
+    switch (infoType) {
+      case 'name':
+        return car ? car.carName : ''
+      case 'owner':
+        return car ? car.carOwner : ''
+      case 'licensePlate':
+        return car ? car.licensePlate : ''
+      default:
+        return ''
+    }
   }
+  return ''
 }
 
-async function fetchCarIcon(carName) {
-  try {
-    const response = await fetch(`https://source.unsplash.com/100x100/?car,${carName}`)
-    return response.url
-  } catch (error) {
-    console.error('Erro ao buscar ícone do carro:', error)
-    return ''
-  }
-}
-
-function getOptimizedImage(imageUrl) {
-  if (localStorage && localStorage[imageUrl]) {
-    return localStorage[imageUrl]
-  }
-  return imageUrl
-}
-
-function filteredCarsByGarage() {
-  const filteredCars =
-    carsByGarage.value[props.garageId]?.map((carId) => {
-      return carsById.value[carId]
-    }) || []
-
-  if (searchLicensePlate.value) {
-    return filteredCars.filter((car) => {
-      return car.licensePlate.includes(searchLicensePlate.value)
+const filteredCars = computed(() => {
+  const carsInGarage = carsByGarage.value[props.garageId]
+  if (carsInGarage) {
+    const searchTerm = searchLicensePlate.value.toLowerCase()
+    return carsInGarage.filter((carId) => {
+      const licensePlate = getCarInfo(carId, 'licensePlate').toLowerCase()
+      return licensePlate.includes(searchTerm)
     })
   }
+  return []
+})
 
-  return filteredCars
-}
+onMounted(async () => {
+  try {
+    await fetchCars()
+  } catch (error) {
+    console.error('Error fetching cars:', error)
+  }
+})
 </script>
 
 <style scoped>
