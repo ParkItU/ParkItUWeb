@@ -1,5 +1,3 @@
-<!-- GaragesComp.vue -->
-
 <template>
   <div class="bg-white">
     <div class="mx-auto sm:w-6/12 lg:w-5/12 xl:w-[50%]">
@@ -29,8 +27,7 @@
               </div>
             </div>
             <img class="absolute bottom-0 right-6 w-[8rem] transition duration-300 group-hover:scale-[1.4]"
-              src="https://res.cloudinary.com/dsyt96xgn/image/upload/v1/media/images/8e4c6d46-4c1e-4381-85bf-11898311b903_mofaex"
-              alt="Garagem" />
+              :src="getGarageImageUrl(garage.imageGarage)" alt="Garagem" />
           </div>
         </div>
       </div>
@@ -43,6 +40,16 @@ import { ref, onMounted } from 'vue'
 import garageService from '@/services/garages.js'
 
 const garages = ref([])
+
+const getGarageImageUrl = (imageGarage) => {
+  // Verifica se imageGarage existe e se file está presente antes de construir a URL
+  if (imageGarage && imageGarage.file) {
+    return `https://backendparkitu-pro.4.us-1.fl0.io${garage.imageGarage.file}`;
+  } else {
+    // Se a propriedade file não estiver presente ou imageGarage não existir, retorne uma URL padrão ou vazia, conforme necessário
+    return 'URL_PADRAO_AQUI';
+  }
+}
 
 onMounted(async () => {
   try {

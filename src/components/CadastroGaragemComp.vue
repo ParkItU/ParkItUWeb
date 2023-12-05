@@ -29,11 +29,10 @@
         </div>
 
         <div>
-          <button type="submit" @click="save"
+          <button type="submit" :disabled="isSubmitting"
             class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
             Adicionar
           </button>
-
         </div>
       </form>
     </div>
@@ -51,25 +50,36 @@ export default {
         nameGarage: '',
         adressGarage: '',
       },
+      isSubmitting: false,
     };
   },
   methods: {
     async save() {
       try {
+        // Evita envios duplicados
+        if (this.isSubmitting) {
+          return;
+        }
+
+        this.isSubmitting = true;
+        console.log('Método save chamado');
+
         // Send garage data to the API
         const response = await axios.post('https://backendparkitu-pro.4.us-1.fl0.io/api/garages/', this.currentGarage);
         console.log('Garagem cadastrada com sucesso:', response.data);
 
-        // Clear form fields
+        // Limpar campos do formulário
         this.currentGarage = {
           nameGarage: '',
           adressGarage: '',
         };
 
-        // Redirect to the /garages route
+        // Redirecionar para a rota /garages
         this.$router.push('/garages');
       } catch (error) {
         console.error('Erro ao cadastrar a garagem:', error);
+      } finally {
+        this.isSubmitting = false;
       }
     },
   },
