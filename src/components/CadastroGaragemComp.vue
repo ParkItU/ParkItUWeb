@@ -12,7 +12,7 @@
               <label for="name" class="mb-3 flex text-base font-medium text-[#07074D]">
                 Nome da Garagem
               </label>
-              <input v-model="currentGarage.nameGarage" type="text" name="name" id="name" placeholder="Digite aqui"
+              <input v-model="currentGarage.name" type="text" name="name" id="name" placeholder="Digite aqui"
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
             </div>
           </div>
@@ -21,8 +21,7 @@
               <label for="endereco" class="mb-3 flex text-base font-medium text-[#07074D]">
                 Endereço
               </label>
-              <input v-model="currentGarage.adressGarage" type="text" name="endereco" id="endereco"
-                placeholder="Digite Aqui"
+              <input v-model="currentGarage.address" type="text" name="endereco" id="endereco" placeholder="Digite Aqui"
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
             </div>
           </div>
@@ -47,8 +46,8 @@ export default {
   data() {
     return {
       currentGarage: {
-        nameGarage: '',
-        adressGarage: '',
+        name: '',
+        address: '',
       },
       isSubmitting: false,
     };
@@ -65,13 +64,13 @@ export default {
         console.log('Método save chamado');
 
         // Send garage data to the API
-        const response = await axios.post('https://backendparkitu-pro.4.us-1.fl0.io/api/garages/', this.currentGarage);
+        const response = await axios.post('https://parkitu.1.us-1.fl0.io/api/garages/', this.currentGarage);
         console.log('Garagem cadastrada com sucesso:', response.data);
 
         // Limpar campos do formulário
         this.currentGarage = {
-          nameGarage: '',
-          adressGarage: '',
+          name: '',
+          address: '',
         };
 
         // Redirecionar para a rota /garages

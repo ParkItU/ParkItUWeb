@@ -5,7 +5,7 @@
       <input v-model="searchLicensePlate" type="text" id="searchInput" placeholder="Pesquisar Carro por Placa..."
         class="w-full p-2 border rounded search-input" />
     </div>
-    <h2 class="text-2xl mt-4 mb-2">{{ nameGarage }}</h2>
+    <h2 class="text-2xl mt-4 mb-2">{{ name }}</h2>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
       <div v-for="carId in filteredCars" :key="carId.toString()" class="mb-4">
         <div class="group relative bg-white p-4 rounded-lg shadow-md cursor-pointer hover:opacity-90">
@@ -28,9 +28,8 @@
 <script setup>
 import { onMounted, ref, computed } from 'vue'
 import carService from '@/services/cars.js'
-import carInGarageService from '@/services/carsingarage.js'
 
-const props = defineProps(['garageId', 'nameGarage'])
+const props = defineProps(['garageId', 'name'])
 
 const cars = ref([])
 const carsByGarage = ref({})
@@ -38,10 +37,6 @@ const searchLicensePlate = ref('')
 
 const fetchCars = async () => {
   try {
-    const carsInGarage = await carInGarageService.getCarsInGarage(props.garageId);
-
-    const carIds = carsInGarage.map((car) => car.idCar);
-    carsByGarage.value[props.garageId] = carIds;
 
     // Obter detalhes completos dos carros
     const allCars = await carService.getAllCars();

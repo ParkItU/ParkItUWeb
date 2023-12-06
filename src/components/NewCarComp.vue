@@ -12,7 +12,7 @@
               <label for="fName" class="mb-3 flex text-base font-medium text-[#07074D]">
                 Nome do Carro
               </label>
-              <input v-model="currentCar.carName" type="text" name="fName" id="fName" placeholder="Digite aqui"
+              <input v-model="currentCar.name" type="text" name="fName" id="fName" placeholder="Digite aqui"
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
             </div>
           </div>
@@ -21,7 +21,7 @@
               <label for="lName" class="mb-3 flex text-base font-medium text-[#07074D]">
                 Nome do Dono do Carro
               </label>
-              <input v-model="currentCar.carOwner" type="text" name="lName" id="lName" placeholder="Digite Aqui"
+              <input v-model="currentCar.owner" type="text" name="lName" id="lName" placeholder="Digite Aqui"
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
             </div>
           </div>
@@ -35,11 +35,10 @@
         </div>
 
         <div class="mb-5">
-          <label for="carOwnerPhone" class="mb-3 flex text-base font-medium text-[#07074D]">
+          <label for="ownerPhone" class="mb-3 flex text-base font-medium text-[#07074D]">
             Número de Telefone
           </label>
-          <input v-model="currentCar.carOwnerPhone" type="text" name="carOwnerPhone" id="carOwnerPhone"
-            placeholder="999999999"
+          <input v-model="currentCar.ownerPhone" type="text" name="ownerPhone" id="ownerPhone" placeholder="999999999"
             class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
         </div>
         <div class="-mx-3 flex flex-wrap">
@@ -48,7 +47,7 @@
               <label for="date" class="mb-3 flex text-base font-medium text-[#07074D]">
                 Data
               </label>
-              <input v-model="currentCar.dateTime" type="date" name="date" id="date"
+              <input v-model="currentCar.date" type="date" name="date" id="date"
                 class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
             </div>
           </div>
@@ -57,10 +56,10 @@
               <label for="garage" class="mb-3 flex text-base font-medium text-[#07074D]">
                 Escolha a Garagem
               </label>
-              <select v-model="currentCar.garageId" name="garage" id="garage"
+              <select v-model="currentCar.garage" name="garage" id="garage"
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
                 <option v-for="garage in garages" :key="garage.id" :value="garage.id">
-                  {{ garage.nameGarage }}
+                  {{ garage.name }}
                 </option>
               </select>
             </div>
@@ -90,12 +89,12 @@ const isLoading = ref(false)
 const router = useRouter()
 
 const currentCar = reactive({
-  carName: '',
-  carOwner: '',
+  name: '',
+  owner: '',
   licensePlate: '',
-  dateTime: '',
-  carOwnerPhone: '',
-  garageId: null
+  date: '',
+  ownerPhone: '',
+  garage: null
 })
 
 const garages = ref([])
@@ -117,25 +116,20 @@ async function save() {
     isLoading.value = true;
 
     // Enviar dados do carro para a API
-    const response = await axios.post('https://backendparkitu-pro.4.us-1.fl0.io/api/cars/', currentCar);
+    const response = await axios.post('https://parkitu.1.us-1.fl0.io/api/cars/', currentCar);
     console.log('Carro cadastrado com sucesso:', response.data);
 
     // Associar o carro à garagem
-    const carId = response.data.id; // Utilizar o ID do carro retornado pela API
-    const carInGarageData = {
-      idCar: carId,
-      idGarage: props.garageId,
-    };
-    await axios.post('https://backendparkitu-pro.4.us-1.fl0.io/api/carsingarage/', carInGarageData);
+    const carId = response.data.id; // Utilizar o ID do carro 
 
     // Limpar campos do formulário
     Object.assign(currentCar, {
-      carName: '',
-      carOwner: '',
+      name: '',
+      owner: '',
       licensePlate: '',
-      dateTime: '',
-      carOwnerPhone: '',
-      garageId: null
+      date: '',
+      ownerPhone: '',
+      garage: null
     });
 
     // Redirecionar para a rota /cars

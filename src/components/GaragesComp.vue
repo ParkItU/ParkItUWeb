@@ -9,8 +9,8 @@
         <div v-for="garage in garages" :key="garage.id" class="mb-4">
           <div class="group relative bg-white p-4 rounded-lg shadow-md cursor-pointer hover:opacity-90">
             <div class="relative space-y-1 p-4">
-              <h4 class="text-lg text-gray-900">{{ garage.nameGarage }}</h4>
-              <h6 class="text-lg text-gray-500">{{ garage.adressGarage }}</h6>
+              <h4 class="text-lg text-gray-900">{{ garage.name }}</h4>
+              <h6 class="text-lg text-gray-500">{{ garage.ad }}</h6>
               <div class="relative h-6 text-gray-800 text-sm">
                 <span class="transition duration-300 group-hover:invisible group-hover:opacity-0">Ver Carros</span>
                 <router-link :to="{ name: 'cars', params: { garageId: garage.id } }"
