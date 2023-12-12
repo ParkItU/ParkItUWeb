@@ -27,6 +27,14 @@
           </div>
         </div>
 
+        <!-- Novo campo para upload de imagem -->
+        <div class="mb-5">
+          <label for="image" class="mb-3 flex text-base font-medium text-[#07074D]">
+            Imagem da Garagem
+          </label>
+          <input type="file" accept="image/*" @change="handleImageUpload" id="image" />
+        </div>
+
         <div>
           <button type="submit" :disabled="isSubmitting"
             class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
@@ -34,6 +42,10 @@
           </button>
         </div>
       </form>
+
+      <!-- Feedback Visual -->
+      <div v-if="successMessage" class="text-green-500 mt-4">{{ successMessage }}</div>
+      <div v-if="errorMessage" class="text-red-500 mt-4">{{ errorMessage }}</div>
     </div>
   </div>
 </template>
@@ -48,6 +60,8 @@ export default {
       currentGarage: {
         name: '',
         address: '',
+        // Adicione uma propriedade para a imagem
+        image: null,
       },
       isSubmitting: false,
     };
@@ -55,25 +69,34 @@ export default {
   methods: {
     async save() {
       try {
-        // Evita envios duplicados
         if (this.isSubmitting) {
           return;
         }
 
         this.isSubmitting = true;
-        console.log('Método save chamado');
 
-        // Send garage data to the API
-        const response = await axios.post('https://parkitu.1.us-1.fl0.io/api/garages/', this.currentGarage);
-        console.log('Garagem cadastrada com sucesso:', response.data);
+        // Use FormData para enviar a imagem
+        const formData = new FormData();
+        formData.append('file', this.currentGarage.image);
 
-        // Limpar campos do formulário
+        // Envie a imagem para a rota de upload de imagem
+        const imageResponse = await axios.post('https://parkitu.1.us-1.fl0.io/api/media/images/', formData);
+        const imageUrl = imageResponse.data.url;
+
+        // Adicione a URL da imagem ao objeto de garagem
+        this.currentGarage.image = imageUrl;
+
+        // Envie os dados da garagem para a rota de criação de garagem
+        const garageResponse = await axios.post('https://parkitu.1.us-1.fl0.io/api/garages/', this.currentGarage);
+
+        console.log('Garagem cadastrada com sucesso:', garageResponse.data);
+
         this.currentGarage = {
           name: '',
           address: '',
+          image: null, // Limpe a imagem após o envio
         };
 
-        // Redirecionar para a rota /garages
         this.$router.push('/garages');
       } catch (error) {
         console.error('Erro ao cadastrar a garagem:', error);

@@ -10,6 +10,7 @@ import HoraView from '../views/HoraView.vue'
 import PreviewFormView from '../views/PreviewFormView.vue'
 import CadastroGaragemView from '../views/CadastroGaragemView.vue'
 import PagamentoView from '../views/PagamentoView.vue'
+import CarsComp from '../components/CarsComp.vue'
 
 
 
@@ -76,8 +77,12 @@ const router = createRouter({
       name: '/pagamento',
       component: PagamentoView
     },
-
-
+    {
+      path: '/cars/:carId', 
+      name: 'carDetails',
+      component: CarsComp,
+      props: true, 
+    },
   ]
 })
 

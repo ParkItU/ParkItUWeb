@@ -66,6 +66,13 @@
           </div>
         </div>
 
+        <div class="mb-5">
+          <label for="image" class="mb-3 flex text-base font-medium text-[#07074D]">
+            Imagem do Carro
+          </label>
+          <input type="file" name="image" id="image" accept="image/*" @change="handleImageChange" />
+        </div>
+
         <div>
           <button type="submit" :class="{ 'cursor-not-allowed opacity-50': isLoading }"
             class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
@@ -80,13 +87,13 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
-import axios from 'axios'
-import { useRouter } from 'vue-router'
-import garageService from '@/services/garages.js'
+import { ref, reactive, onMounted } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
+import garageService from '@/services/garages.js';
 
-const isLoading = ref(false)
-const router = useRouter()
+const isLoading = ref(false);
+const router = useRouter();
 
 const currentCar = reactive({
   name: '',
@@ -94,22 +101,23 @@ const currentCar = reactive({
   licensePlate: '',
   date: '',
   ownerPhone: '',
-  garage: null
-})
+  garage: null,
+  image: null,
+});
 
-const garages = ref([])
+const garages = ref([]);
 
 onMounted(async () => {
   try {
-    isLoading.value = true
-    const data = await garageService.getAllGarages()
-    garages.value = data
+    isLoading.value = true;
+    const data = await garageService.getAllGarages();
+    garages.value = data;
   } catch (error) {
-    console.error('Error fetching garages:', error)
+    console.error('Error fetching garages:', error);
   } finally {
-    isLoading.value = false
+    isLoading.value = false;
   }
-})
+});
 
 async function save() {
   try {
@@ -119,8 +127,11 @@ async function save() {
     const response = await axios.post('https://parkitu.1.us-1.fl0.io/api/cars/', currentCar);
     console.log('Carro cadastrado com sucesso:', response.data);
 
-    // Associar o carro à garagem
-    const carId = response.data.id; // Utilizar o ID do carro 
+    // Se o carro foi criado com sucesso, associar a imagem
+    if (response.data.id) {
+      const carId = response.data.id;
+      await uploadImage(carId);
+    }
 
     // Limpar campos do formulário
     Object.assign(currentCar, {
@@ -129,7 +140,8 @@ async function save() {
       licensePlate: '',
       date: '',
       ownerPhone: '',
-      garage: null
+      garage: null,
+      image: null,
     });
 
     // Redirecionar para a rota /cars
@@ -141,4 +153,14 @@ async function save() {
   }
 }
 
+async function uploadImage(carId) {
+  const formData = new FormData();
+  formData.append('files', currentCar.image);
+
+  await axios.post(`https://parkitu.1.us-1.fl0.io/api/media/images/?ref=car&id=${carId}`, formData);
+}
+
+function handleImageChange(event) {
+  currentCar.image = event.target.files[0];
+}
 </script>
